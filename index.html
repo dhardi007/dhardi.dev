@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#e94560" />
 
-  <!-- SEO -->
   <title>Diego Härdi | DevOps & Software Engineer · Dominican · Swiss</title>
   <meta name="description" content="Diego Härdi — DevOps & Software Engineer. Dominican-born with Swiss heritage. Building full-stack from Jarabacoa, DR." />
   <meta property="og:title" content="Diego Härdi | DevOps & Software Engineer" />
@@ -13,12 +12,10 @@
   <meta property="og:image" content="assets/avatar.jpg" />
   <meta property="og:type" content="website" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -46,28 +43,27 @@
     .glow { box-shadow: 0 0 30px rgba(233, 69, 96, 0.3); }
     .glow-cyan { box-shadow: 0 0 30px rgba(0, 217, 255, 0.2); }
     .hover-glow:hover { box-shadow: 0 0 25px rgba(233, 69, 96, 0.5); transform: translateY(-2px); }
-    .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .nav-blur { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
 
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInScale { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
     @keyframes pulse-soft { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
     .animate-fade-in-up { animation: fadeInUp 0.8s ease forwards; }
-    .animate-fade-in-scale { animation: fadeInScale 0.8s ease forwards; }
     .animate-float { animation: float 4s ease-in-out infinite; }
-    .animate-kenburns { animation: kenburns 12s ease forwards; }
+    .animate-kenburns { animation: kenburns 10s ease forwards; }
     .animate-delay-1 { animation-delay: 0.2s; }
     .animate-delay-2 { animation-delay: 0.4s; }
     .animate-delay-3 { animation-delay: 0.6s; }
+    .animate-delay-4 { animation-delay: 0.8s; }
 
     .icon-tech { width: 40px; height: 40px; filter: grayscale(100%) brightness(1.5); transition: all 0.3s ease; }
     .icon-tech:hover { filter: grayscale(0%) brightness(1); transform: scale(1.2) rotate(5deg); }
     .project-card { transition: all 0.3s ease; border: 1px solid transparent; }
     .project-card:hover { border-color: #e94560; transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
-    /* Background slideshow */
     .bg-slideshow { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
     .bg-slide {
       position: absolute; inset: 0;
@@ -77,7 +73,6 @@
     .bg-slide.active { opacity: 1; }
     .bg-slide.kenburns { animation: kenburns 10s ease forwards; }
 
-    /* Slideshow nav arrows */
     .slide-nav {
       position: absolute; top: 50%; z-index: 5; transform: translateY(-50%);
       width: 48px; height: 48px; border-radius: 50%;
@@ -90,25 +85,17 @@
     .slide-nav.next { right: 16px; }
     @media (max-width: 640px) { .slide-nav { display: none; } }
 
-    /* Vibe indicator */
-    .vibe-dot { transition: all 0.4s ease; }
-    .vibe-label { transition: all 0.4s ease; }
-
-    /* Section transitions */
     .section-in {
       opacity: 0; transform: translateY(40px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
     .section-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* Stagger children */
     .stagger-child {
       opacity: 0; transform: translateY(30px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .section-in.visible .stagger-child {
-      opacity: 1; transform: translateY(0);
-    }
+    .section-in.visible .stagger-child { opacity: 1; transform: translateY(0); }
     .section-in.visible .stagger-child:nth-child(1) { transition-delay: 0s; }
     .section-in.visible .stagger-child:nth-child(2) { transition-delay: 0.1s; }
     .section-in.visible .stagger-child:nth-child(3) { transition-delay: 0.2s; }
@@ -117,30 +104,58 @@
     .section-in.visible .stagger-child:nth-child(6) { transition-delay: 0.5s; }
     .section-in.visible .stagger-child:nth-child(7) { transition-delay: 0.6s; }
     .section-in.visible .stagger-child:nth-child(8) { transition-delay: 0.7s; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px; border-radius: 9999px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+    }
+    .timeline-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 3px solid #e94560; background: #0a0a0a;
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .timeline-line {
+      position: absolute; top: 20px; left: 6px;
+      width: 2px; height: calc(100% + 24px);
+      background: linear-gradient(to bottom, #e94560, #00d9ff);
+    }
+    .exp-card {
+      transition: all 0.3s ease;
+    }
+    .exp-card:hover {
+      transform: translateX(8px);
+    }
   </style>
 </head>
 <body class="bg-[#0a0a0a] text-[#eaeaea] font-body">
 
   <!-- ===== NAVBAR ===== -->
-  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur bg-[#0a0a0a]/80 border-b border-[#e94560]/20">
+  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur bg-[#0a0a0a]/70 border-b border-white/5">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#" class="font-display font-bold text-xl">
-        <span class="text-[#e94560]">d</span><span class="text-[#00d9ff]">h</span><span class="text-[#e94560]">.</span>
+      <a href="#" class="font-display font-bold text-xl flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#e94560] to-[#00d9ff] flex items-center justify-center text-white text-sm font-bold">D</span>
+        <span class="hidden sm:inline text-[#eaeaea]">dhardi</span>
       </a>
-      <div class="hidden sm:flex items-center gap-8 text-sm text-[#888]">
-        <a href="#about" class="hover:text-[#00d9ff] transition-colors">About</a>
-        <a href="#stack" class="hover:text-[#00d9ff] transition-colors">Stack</a>
-        <a href="#projects" class="hover:text-[#00d9ff] transition-colors">Projects</a>
-        <a href="#blog" class="hover:text-[#00d9ff] transition-colors">Blog</a>
-        <a href="#contact" class="hover:text-[#00d9ff] transition-colors">Contact</a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="#experience" class="px-4 py-2 text-sm text-[#888] hover:text-[#eaeaea] hover:bg-white/5 rounded-lg transition-all">Experience</a>
+        <a href="#projects" class="px-4 py-2 text-sm text-[#888] hover:text-[#eaeaea] hover:bg-white/5 rounded-lg transition-all">Projects</a>
+        <a href="#about" class="px-4 py-2 text-sm text-[#888] hover:text-[#eaeaea] hover:bg-white/5 rounded-lg transition-all">About</a>
+        <a href="#blog" class="px-4 py-2 text-sm text-[#888] hover:text-[#eaeaea] hover:bg-white/5 rounded-lg transition-all">Blog</a>
+        <a href="#contact" class="px-4 py-2 text-sm text-[#888] hover:text-[#eaeaea] hover:bg-white/5 rounded-lg transition-all">Contact</a>
       </div>
-      <a href="assets/cv.pdf" target="_blank" class="hidden sm:inline-block px-5 py-2 bg-[#e94560] text-white text-sm font-semibold rounded hover:bg-[#d91a3a] transition-all hover-glow">Resume</a>
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs font-medium">
+          <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+          Disponible para trabajar
+        </span>
+        <a href="assets/cv.pdf" target="_blank" class="px-5 py-2 bg-[#e94560] text-white text-sm font-semibold rounded-lg hover:bg-[#d91a3a] transition-all hover-glow">Resume</a>
+      </div>
     </div>
   </nav>
 
   <!-- ===== HERO ===== -->
   <section id="hero" class="relative min-h-screen flex items-center justify-center pt-16 px-4 overflow-hidden">
-    <!-- Background slideshow -->
     <div class="bg-slideshow">
       <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1920&q=80')"></div>
       <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1540202404-a2f29016b523?auto=format&fit=crop&w=1920&q=80')"></div>
@@ -152,10 +167,8 @@
       <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1920&q=80')"></div>
     </div>
 
-    <!-- Gradient overlay (switches tone) — darker for readability -->
-    <div id="hero-overlay" class="absolute inset-0 z-[1] transition-all duration-1000" style="background: linear-gradient(135deg, rgba(5,5,25,0.85) 0%, rgba(5,5,5,0.75) 50%, rgba(25,10,5,0.85) 100%);"></div>
+    <div id="hero-overlay" class="absolute inset-0 z-[1] transition-all duration-1000" style="background: linear-gradient(135deg, rgba(5,5,25,0.88) 0%, rgba(5,5,5,0.8) 50%, rgba(25,10,5,0.85) 100%);"></div>
 
-    <!-- Slideshow nav arrows -->
     <button onclick="prevSlide()" class="slide-nav prev" aria-label="Previous slide">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
@@ -163,9 +176,7 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     </button>
 
-    <!-- Content -->
     <div class="max-w-6xl mx-auto text-center relative z-10">
-      <!-- Vibe indicator -->
       <div id="vibe-indicator" class="mb-6 inline-flex items-center gap-3 px-4 py-2 bg-black/50 backdrop-blur-md rounded-full border border-white/10 text-xs font-semibold tracking-wider uppercase animate-fade-in-up">
         <span id="vibe-icon" class="text-lg">❄️</span>
         <span id="vibe-label" class="text-[#888]">Swiss Alps</span>
@@ -173,21 +184,28 @@
         <span id="vibe-counter" class="text-[#555]">1/8</span>
       </div>
 
-      <div class="animate-float inline-block mb-8">
+      <div class="animate-float inline-block mb-6">
         <div class="w-36 h-36 sm:w-44 sm:h-44 mx-auto rounded-full border-4 border-[#e94560] overflow-hidden glow">
           <img src="assets/avatar.jpg" alt="Diego Härdi" class="w-full h-full object-cover" />
         </div>
       </div>
 
-      <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-4 animate-fade-in-up">
+      <div class="flex justify-center mb-4 animate-fade-in-up">
+        <span class="flex items-center gap-2 px-4 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs font-medium">
+          <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+          Disponible para trabajar
+        </span>
+      </div>
+
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-3 animate-fade-in-up">
         Diego <span class="gradient-text">Härdi</span>
       </h1>
 
-      <p class="text-lg sm:text-xl text-[#ccc] mb-3 animate-fade-in-up animate-delay-1">
+      <p class="text-lg sm:text-xl text-[#ccc] mb-2 animate-fade-in-up animate-delay-1">
         DevOps &amp; Software Engineer
       </p>
 
-      <p class="text-sm sm:text-base text-[#ccc] mb-8 animate-fade-in-up animate-delay-1 font-medium">
+      <p class="text-sm sm:text-base text-[#ccc] mb-6 animate-fade-in-up animate-delay-1 font-medium">
         <span class="text-[#00d9ff]">🇩🇴 Born in San Pedro de Macorís</span>
         <span class="text-[#555] mx-2">·</span>
         <span class="text-[#e94560]">🇨🇭 Swiss passport</span>
@@ -199,40 +217,253 @@
       </p>
 
       <div class="flex flex-wrap justify-center gap-4 animate-fade-in-up animate-delay-2">
-        <a href="#contact" class="px-8 py-3 bg-[#e94560] text-white font-semibold rounded hover:bg-[#d91a3a] transition-all hover-glow">Get in touch</a>
-        <a href="assets/cv.pdf" target="_blank" class="px-8 py-3 border border-[#e94560] text-[#e94560] font-semibold rounded hover:bg-[#e94560] hover:text-white transition-all">Download CV</a>
+        <a href="#contact" class="px-8 py-3 bg-[#e94560] text-white font-semibold rounded-lg hover:bg-[#d91a3a] transition-all hover-glow">Get in touch</a>
+        <a href="assets/cv.pdf" target="_blank" class="px-8 py-3 border border-[#e94560] text-[#e94560] font-semibold rounded-lg hover:bg-[#e94560] hover:text-white transition-all">Download CV</a>
       </div>
 
       <div class="mt-8 flex justify-center gap-5 animate-fade-in-up animate-delay-3">
-        <a href="https://github.com/dizzi1222" target="_blank" class="hover:scale-110 transition-transform"><svg width="22" height="22" viewBox="0 0 24 24" fill="#888888" class="hover:fill-[#e94560] transition-colors"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
-        <a href="https://www.linkedin.com/in/dizzi-%C5%8Dkami-0b77093a1/" target="_blank" class="hover:scale-110 transition-transform"><svg width="22" height="22" viewBox="0 0 24 24" fill="#888888" class="hover:fill-[#e94560] transition-colors"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-        <a href="https://x.com/dizzi_ds" target="_blank" class="hover:scale-110 transition-transform"><svg width="22" height="22" viewBox="0 0 24 24" fill="#888888" class="hover:fill-[#e94560] transition-colors"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-        <a href="https://dev.to/dizzi1222" target="_blank" class="hover:scale-110 transition-transform"><svg width="22" height="22" viewBox="0 0 24 24" fill="#888888" class="hover:fill-[#e94560] transition-colors"><path d="M7.371 8.724c-.384-.098-.764-.147-1.141-.147h-2.05v6.846h2.05c.384 0 .764-.049 1.141-.147.472-.098.887-.287 1.245-.567.358-.279.64-.637.846-1.074.206-.437.309-.943.309-1.517v-1.8c0-.587-.103-1.096-.309-1.529-.206-.432-.488-.787-.846-1.064a2.526 2.526 0 00-1.245-.56v-.001zm-.692 5.362c-.206.216-.488.324-.846.324h-.348v-4.87h.348c.358 0 .64.108.846.324a1.2 1.2 0 01.324.879v1.8c0 .206-.037.384-.113.534a.628.628 0 01-.211.383v.626zm4.506-5.819c-.543.177-.993.442-1.349.795v-.633h-2.281v6.846h2.281v-3.775c.281-.324.654-.486 1.119-.486.465 0 .735.162.809.486.074.324.111.777.111 1.359v2.416h2.281v-2.619c0-.543-.055-1.018-.166-1.426-.111-.408-.297-.753-.557-1.034a2.408 2.408 0 00-.967-.646 3.762 3.762 0 00-1.281-.283z"/></svg></a>
+        <a href="https://github.com/dizzi1222" target="_blank" class="hover:scale-110 transition-transform" aria-label="GitHub">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#888888" class="hover:fill-[#e94560] transition-colors"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/dizzi-%C5%8Dkami-0b77093a1/" target="_blank" class="hover:scale-110 transition-transform" aria-label="LinkedIn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#888888" class="hover:fill-[#e94560] transition-colors"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/dizzi_ds" target="_blank" class="hover:scale-110 transition-transform" aria-label="X">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#888888" class="hover:fill-[#e94560] transition-colors"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://dev.to/dizzi1222" target="_blank" class="hover:scale-110 transition-transform" aria-label="Dev.to">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#888888" class="hover:fill-[#e94560] transition-colors"><path d="M18.245 0H5.755C2.574 0 0 2.574 0 5.755v12.49C0 21.426 2.574 24 5.755 24h12.49C21.426 24 24 21.426 24 18.245V5.755C24 2.574 21.426 0 18.245 0zm-4.075 15.698a1.424 1.424 0 01-.706.19c-.7 0-1.085-.422-1.085-1.176v-5.47h1.582v5.421c0 .393.108.642.345.803.166.114.364.17.585.17a.964.964 0 00.694-.293l.492.732a1.888 1.888 0 01-.907.623zm-3.59-1.407c0 .763-.509 1.411-1.566 1.411-.61 0-1.103-.162-1.483-.49l.544-.781c.32.253.69.393 1.035.393.385 0 .595-.181.595-.475 0-.286-.136-.46-.883-.594-.986-.179-1.65-.622-1.65-1.506 0-.809.579-1.364 1.491-1.364.529 0 .987.143 1.344.427l-.49.794a1.34 1.34 0 00-.91-.367c-.352 0-.54.158-.54.387 0 .29.167.409.878.54.98.183 1.635.605 1.635 1.538v.087zm3.63-3.832c-.43 0-.775-.342-.775-.76 0-.418.346-.756.776-.756.432 0 .78.338.78.756 0 .418-.348.76-.78.76zm-7.866 0H4.663v7.31H5.58c.658 0 1.19-.147 1.61-.443.462-.33.694-.846.694-1.556v-3.89c0-.705-.23-1.22-.69-1.548-.42-.294-.953-.44-1.61-.44v.567zm.307 4.102c0 .66-.52 1.081-1.17 1.081h-.437v-5.27h.438c.65 0 1.169.414 1.169 1.073v3.116z"/></svg>
+        </a>
       </div>
     </div>
 
-    <!-- Scroll hint -->
-    <div onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-pulse-soft cursor-pointer hover:opacity-70 transition-opacity">
+    <div onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-pulse-soft cursor-pointer hover:opacity-70 transition-opacity">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="py-24 px-4">
-    <div class="max-w-4xl mx-auto section-in">
-      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4 text-center">
-        <span class="gradient-text">/</span> De San Pedro al Mundo
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="py-24 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0a1a] to-[#0a0a0a] opacity-60"></div>
+    <div class="absolute top-20 right-10 w-96 h-96 bg-[#e94560]/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-10 w-80 h-80 bg-[#00d9ff]/5 rounded-full blur-3xl"></div>
+    <div class="max-w-4xl mx-auto relative z-10 section-in">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-2 text-center">
+        <span class="gradient-text">/</span> Experience
       </h2>
-      <div class="w-16 h-1 bg-[#e94560] mx-auto mb-12 rounded-full"></div>
+      <div class="w-16 h-1 bg-[#e94560] mx-auto mb-4 rounded-full"></div>
+      <p class="text-[#555] text-center mb-12">Mi trayectoria profesional</p>
 
-      <!-- Swiss / Caribbean contrast cards -->
+      <div class="relative pl-8 space-y-10">
+        <div class="relative timeline-line"></div>
+
+        <!-- Job 1: La Sirena -->
+        <div class="exp-card stagger-child relative">
+          <div class="timeline-dot absolute -left-[30px] top-1"></div>
+          <div class="bg-gradient-to-br from-[#111] to-[#0d0d1a] border border-[#222] hover:border-[#e94560]/30 rounded-xl p-6">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+              <div>
+                <span class="badge bg-purple-500/10 text-purple-400 border border-purple-500/20 mb-2">Retail</span>
+                <h3 class="font-display text-xl font-bold text-[#eaeaea]">Asistente / Cajero</h3>
+                <p class="text-[#00d9ff] text-sm font-medium">La Sirena · República Dominicana</p>
+              </div>
+              <span class="text-xs text-[#555] whitespace-nowrap px-3 py-1 bg-[#222] rounded-full">2021 — 2023</span>
+            </div>
+            <p class="text-[#888] text-sm leading-relaxed">
+              Mi primer contacto con el mundo laboral formal. Trabajar en uno de los supermercados más grandes del país me enseñó cómo funciona realmente un negocio desde adentro: logística, inventario, atención al cliente bajo presión. Pero también vi de cerca lo peor del trabajo físico sin futuro — el agotamiento, la falta de oportunidades reales, el nepotismo. Esa experiencia fue el combustible que encendió mi decisión de salir de ahí y construir una carrera en tecnología.
+            </p>
+          </div>
+        </div>
+
+        <!-- Job 2: Cincinnatus -->
+        <div class="exp-card stagger-child relative">
+          <div class="timeline-dot absolute -left-[30px] top-1"></div>
+          <div class="bg-gradient-to-br from-[#111] to-[#0d0d1a] border border-[#222] hover:border-[#00d9ff]/30 rounded-xl p-6">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+              <div>
+                <span class="badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2">Education</span>
+                <h3 class="font-display text-xl font-bold text-[#eaeaea]">Bootcamp Full-Stack</h3>
+                <p class="text-[#00d9ff] text-sm font-medium">Cincinnatus · República Dominicana</p>
+              </div>
+              <span class="text-xs text-[#555] whitespace-nowrap px-3 py-1 bg-[#222] rounded-full">2023 — 2024</span>
+            </div>
+            <p class="text-[#888] text-sm leading-relaxed">
+              El motor de arranque de mi carrera como programador. Cincinnatus fue el punto de inflexión donde pasé de ser un curioso autodidacta a un desarrollador en formación. Aprendí los fundamentos del desarrollo web full-stack, trabajé en proyectos reales en equipo, y descubrí que la programación no era solo un trabajo — era mi vocación. Aquí construí las bases que me permiten hoy trabajar con MERN, DevOps y Linux.
+            </p>
+          </div>
+        </div>
+
+        <!-- Job 3: Current -->
+        <div class="exp-card stagger-child relative">
+          <div class="timeline-dot absolute -left-[30px] top-1"></div>
+          <div class="bg-gradient-to-br from-[#111] to-[#0d0d1a] border border-[#e94560]/20 hover:border-[#e94560]/50 rounded-xl p-6 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-[#e94560]/10 rounded-full blur-2xl"></div>
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-3 relative">
+              <div>
+                <span class="badge bg-[#e94560]/10 text-[#e94560] border border-[#e94560]/20 mb-2">Current</span>
+                <h3 class="font-display text-xl font-bold text-[#eaeaea]">MERN Stack Developer · DevOps</h3>
+                <p class="text-[#00d9ff] text-sm font-medium">Freelance / Proyectos Propios · Arch Linux · Neovim</p>
+              </div>
+              <span class="text-xs text-[#e94560] whitespace-nowrap px-3 py-1 bg-[#e94560]/10 border border-[#e94560]/20 rounded-full">2024 — Presente</span>
+            </div>
+            <p class="text-[#888] text-sm leading-relaxed relative">
+              Desarrollo full-stack con el stack MERN (MongoDB, Express, React, Node.js). Arquitecturas limpias, APIs RESTful, despliegues con Docker y automatización de flujos. Mi entorno: Arch Linux con Hyprland, Neovim (LazyVim) como editor principal. También configuro dotfiles, gestiono servidores y construyo herramientas que optimizan mi propio workflow. Cada proyecto es una oportunidad para escribir código mantenible y sistemas bien diseñados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="py-24 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a1a] to-[#0a0a0a] opacity-40"></div>
+    <div class="max-w-6xl mx-auto relative z-10 section-in">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-2 text-center">
+        <span class="gradient-text">/</span> Projects
+      </h2>
+      <div class="w-16 h-1 bg-[#e94560] mx-auto mb-4 rounded-full"></div>
+      <p class="text-[#555] text-center mb-12">Cosas que he construido</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Dashboard React -->
+        <div class="project-card bg-gradient-to-br from-[#111] to-[#0d0d1a] rounded-xl p-6 glow-cyan stagger-child">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-[#e94560]/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-[#e94560]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <div class="flex gap-1">
+              <span class="px-2 py-0.5 text-[10px] bg-yellow-500/10 text-yellow-400 rounded font-mono">★ 1</span>
+            </div>
+          </div>
+          <h3 class="font-display text-lg font-bold mb-2 text-[#00d9ff]">Dashboard React</h3>
+          <p class="text-[#888] text-sm mb-4 leading-relaxed">Panel de administración con gráficos, calculadora, contador y TO-DO list. Todo en un solo proyecto con React y react-router-dom.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">React</span>
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">CSS</span>
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">JS</span>
+          </div>
+          <div class="flex gap-3 pt-3 border-t border-[#222]">
+            <a href="https://github.com/dizzi1222/REACT-Diego-Dizzi-Dashboard" target="_blank" class="flex items-center gap-1.5 text-xs text-[#555] hover:text-[#00d9ff] transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              Code
+            </a>
+            <a href="https://dhardi007.github.io/REACT-Diego-Dizzi-Dashboard/" target="_blank" class="flex items-center gap-1.5 text-xs text-[#555] hover:text-[#00d9ff] transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Preview
+            </a>
+          </div>
+        </div>
+
+        <!-- Terminal Portfolio -->
+        <div class="project-card bg-gradient-to-br from-[#111] to-[#0d0d1a] rounded-xl p-6 glow-cyan stagger-child">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-[#00d9ff]/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-[#00d9ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <div class="flex gap-1">
+              <span class="px-2 py-0.5 text-[10px] bg-yellow-500/10 text-yellow-400 rounded font-mono">★ 2</span>
+            </div>
+          </div>
+          <h3 class="font-display text-lg font-bold mb-2 text-[#00d9ff]">Terminal Portfolio</h3>
+          <p class="text-[#888] text-sm mb-4 leading-relaxed">Portfolio interactivo con estética de terminal Linux. Comandos CLI, efectos CRT, navegación estilo Vim. Diseñado para developers.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">HTML</span>
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">CSS</span>
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">JS</span>
+          </div>
+          <div class="flex gap-3 pt-3 border-t border-[#222]">
+            <a href="https://github.com/dizzi1222/portfolio-terminal-dhardi" target="_blank" class="flex items-center gap-1.5 text-xs text-[#555] hover:text-[#00d9ff] transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              Code
+            </a>
+            <a href="https://dizzi1222.github.io/portfolio-terminal-dhardi/" target="_blank" class="flex items-center gap-1.5 text-xs text-[#555] hover:text-[#00d9ff] transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Preview
+            </a>
+          </div>
+        </div>
+
+        <!-- Dotfiles -->
+        <div class="project-card bg-gradient-to-br from-[#111] to-[#0d0d1a] rounded-xl p-6 glow-cyan stagger-child">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-[#e94560]/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-[#e94560]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <div class="flex gap-1">
+              <span class="px-2 py-0.5 text-[10px] bg-yellow-500/10 text-yellow-400 rounded font-mono">★ 3</span>
+            </div>
+          </div>
+          <h3 class="font-display text-lg font-bold mb-2 text-[#00d9ff]">Dotfiles</h3>
+          <p class="text-[#888] text-sm mb-4 leading-relaxed">Configuración completa de Arch Linux con Hyprland, Neovim (LazyVim), Kitty, Zsh, Waybar, EWW widgets y Rofi.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">Shell</span>
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">Python</span>
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">CSS</span>
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">Lua</span>
+          </div>
+          <div class="flex gap-3 pt-3 border-t border-[#222]">
+            <a href="https://github.com/dizzi1222/dotfiles-dizzi" target="_blank" class="flex items-center gap-1.5 text-xs text-[#555] hover:text-[#00d9ff] transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              Code
+            </a>
+            <a href="https://github.com/dizzi1222/dotfiles-dizzi" target="_blank" class="flex items-center gap-1.5 text-xs text-[#555] hover:text-[#00d9ff] transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Preview
+            </a>
+          </div>
+        </div>
+
+        <!-- MCSD App -->
+        <div class="project-card bg-gradient-to-br from-[#111] to-[#0d0d1a] rounded-xl p-6 glow-cyan stagger-child">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-[#00d9ff]/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-[#00d9ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+          </div>
+          <h3 class="font-display text-lg font-bold mb-2 text-[#00d9ff]">MCSD App</h3>
+          <p class="text-[#888] text-sm mb-4 leading-relaxed">App educativa sobre conducción segura en RD. 8 páginas, diseño responsive con glassmorphism y animaciones scroll-based.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">Vite</span>
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">Tailwind</span>
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">HTML</span>
+            <span class="px-2 py-0.5 text-[11px] bg-[#222] text-[#e94560] rounded font-mono">JS</span>
+          </div>
+          <div class="flex gap-3 pt-3 border-t border-[#222]">
+            <a href="https://github.com/dizzi1222/Proyecto-App-MCSD" target="_blank" class="flex items-center gap-1.5 text-xs text-[#555] hover:text-[#00d9ff] transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              Code
+            </a>
+            <a href="https://dizzi1222.github.io/Proyecto-App-MCSD/" target="_blank" class="flex items-center gap-1.5 text-xs text-[#555] hover:text-[#00d9ff] transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Preview
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="py-24 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0a0a] to-[#0a0a0a] opacity-60"></div>
+    <div class="absolute top-40 left-20 w-72 h-72 bg-[#00d9ff]/5 rounded-full blur-3xl"></div>
+    <div class="max-w-4xl mx-auto relative z-10 section-in">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-2 text-center">
+        <span class="gradient-text">/</span> Sobre mí
+      </h2>
+      <div class="w-16 h-1 bg-[#e94560] mx-auto mb-4 rounded-full"></div>
+      <p class="text-[#555] text-center mb-12">De San Pedro al Mundo</p>
+
       <div class="grid md:grid-cols-2 gap-6 mb-12">
-        <div class="bg-gradient-to-br from-blue-900/40 to-blue-950/40 border border-blue-500/20 rounded-xl p-6 text-center">
+        <div class="bg-gradient-to-br from-blue-900/40 to-blue-950/40 border border-blue-500/20 rounded-xl p-6 text-center hover:border-blue-500/40 transition-all">
           <span class="text-4xl">🇨🇭</span>
           <h3 class="font-display font-bold text-lg mt-2 text-blue-300">Raíces Suizas</h3>
           <p class="text-[#aaa] text-sm mt-2">Pasaporte suizo. La precisión, el orden y la calidad están en mi sangre. From the Alps to the Caribbean — llevo Suiza conmigo.</p>
         </div>
-        <div class="bg-gradient-to-br from-orange-900/40 to-amber-950/40 border border-orange-500/20 rounded-xl p-6 text-center">
+        <div class="bg-gradient-to-br from-orange-900/40 to-amber-950/40 border border-orange-500/20 rounded-xl p-6 text-center hover:border-orange-500/40 transition-all">
           <span class="text-4xl">🇩🇴</span>
           <h3 class="font-display font-bold text-lg mt-2 text-orange-300">Corazón Dominicano</h3>
           <p class="text-[#aaa] text-sm mt-2">Nací en San Pedro de Macorís, crecí en el calor del Caribe. Hoy vivo en Jarabacoa, donde el clima fresco se encuentra con la montaña.</p>
@@ -275,9 +506,10 @@
   </section>
 
   <!-- ===== TECH STACK ===== -->
-  <section id="stack" class="py-24 px-4 bg-[#0d0d0d]">
-    <div class="max-w-4xl mx-auto text-center section-in">
-      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">
+  <section id="stack" class="py-24 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a1a] to-[#0a0a0a] opacity-60"></div>
+    <div class="max-w-4xl mx-auto text-center relative z-10 section-in">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-2">
         <span class="gradient-text">/</span> Tech Stack
       </h2>
       <div class="w-16 h-1 bg-[#e94560] mx-auto mb-4 rounded-full"></div>
@@ -292,7 +524,7 @@
           <span class="text-xs text-[#555] group-hover:text-[#00d9ff] transition-colors">Express</span>
         </div>
         <div class="flex flex-col items-center gap-2 group cursor-pointer">
-          <svg class="icon-tech" width="40" height="40" viewBox="0 0 24 24" fill="#eaeaea"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.96... (line truncated to 2000 chars)"/></svg>
+          <svg class="icon-tech" width="40" height="40" viewBox="0 0 24 24" fill="#eaeaea"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.708.17-.435.315-.972.398-1.623.007-.055.028-.113.045-.168.032-.105.067-.214.092-.33z"/></svg>
           <span class="text-xs text-[#555] group-hover:text-[#00d9ff] transition-colors">React</span>
         </div>
         <div class="flex flex-col items-center gap-2 group cursor-pointer">
@@ -323,128 +555,79 @@
     </div>
   </section>
 
-  <!-- ===== PROJECTS ===== -->
-  <section id="projects" class="py-24 px-4">
-    <div class="max-w-6xl mx-auto section-in">
-      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4 text-center">
-        <span class="gradient-text">/</span> Projects
-      </h2>
-      <div class="w-16 h-1 bg-[#e94560] mx-auto mb-12 rounded-full"></div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Dashboard React -->
-        <div class="project-card bg-[#111] rounded-xl p-6 glow-cyan stagger-child">
-          <div class="w-12 h-12 bg-[#e94560]/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-[#e94560]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold mb-2 text-[#00d9ff]">Dashboard React</h3>
-          <p class="text-[#888] text-sm mb-4">Panel de administración con gráficos interactivos, gestión de datos y autenticación. Full-stack con Node.js y MongoDB.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">React</span>
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">Node.js</span>
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">MongoDB</span>
-          </div>
-          <a href="https://github.com/dizzi1222/REACT-Diego-Dizzi-Dashboard" target="_blank" class="text-sm text-[#555] hover:text-[#00d9ff] transition-colors">View on GitHub →</a>
-        </div>
-        <!-- Terminal Portfolio -->
-        <div class="project-card bg-[#111] rounded-xl p-6 glow-cyan stagger-child">
-          <div class="w-12 h-12 bg-[#00d9ff]/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-[#00d9ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold mb-2 text-[#00d9ff]">Terminal Portfolio</h3>
-          <p class="text-[#888] text-sm mb-4">Portfolio con estética de terminal Linux, efectos CRT y navegación estilo Vim.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">HTML</span>
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">CSS</span>
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">JS</span>
-          </div>
-          <a href="https://github.com/dizzi1222/portfolio-terminal-dhardi" target="_blank" class="text-sm text-[#555] hover:text-[#00d9ff] transition-colors">View on GitHub →</a>
-        </div>
-        <!-- Dotfiles -->
-        <div class="project-card bg-[#111] rounded-xl p-6 glow-cyan stagger-child">
-          <div class="w-12 h-12 bg-[#e94560]/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-[#e94560]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold mb-2 text-[#00d9ff]">Dotfiles</h3>
-          <p class="text-[#888] text-sm mb-4">Configuración completa de Arch Linux con Hyprland, Neovim (LazyVim), Kitty, Zsh y Waybar.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">Lua</span>
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">Shell</span>
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">YAML</span>
-          </div>
-          <a href="https://github.com/dizzi1222/dotfiles-dizzi" target="_blank" class="text-sm text-[#555] hover:text-[#00d9ff] transition-colors">View on GitHub →</a>
-        </div>
-        <!-- MCSD App -->
-        <div class="project-card bg-[#111] rounded-xl p-6 glow-cyan stagger-child">
-          <div class="w-12 h-12 bg-[#00d9ff]/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-[#00d9ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          </div>
-          <h3 class="font-display text-xl font-bold mb-2 text-[#00d9ff]">MCSD App</h3>
-          <p class="text-[#888] text-sm mb-4">Aplicación educativa sobre conducción segura en República Dominicana. Modernizada con Tailwind CSS y Vite.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">Vite</span>
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">Tailwind</span>
-            <span class="px-2 py-1 text-xs bg-[#222] text-[#e94560] rounded">HTML</span>
-          </div>
-          <a href="https://github.com/dizzi1222/Proyecto-App-MCSD" target="_blank" class="text-sm text-[#555] hover:text-[#00d9ff] transition-colors">View on GitHub →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== BLOG ===== -->
   <section id="blog" class="py-24 px-4 bg-[#0d0d0d]">
     <div class="max-w-4xl mx-auto text-center section-in">
-      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-2">
         <span class="gradient-text">/</span> Blog
       </h2>
       <div class="w-16 h-1 bg-[#e94560] mx-auto mb-4 rounded-full"></div>
       <p class="text-[#555] mb-8">Thoughts on dev, ops, and Linux</p>
       <div id="devto-articles" class="text-[#888] text-sm">Loading articles from Dev.to...</div>
-      <a href="https://dev.to/dizzi1222" target="_blank" class="inline-block mt-6 px-6 py-3 border border-[#00d9ff] text-[#00d9ff] font-semibold rounded hover:bg-[#00d9ff] hover:text-[#0a0a0a] transition-all">View all on Dev.to →</a>
+      <a href="https://dev.to/dizzi1222" target="_blank" class="inline-block mt-6 px-6 py-3 border border-[#00d9ff] text-[#00d9ff] font-semibold rounded-lg hover:bg-[#00d9ff] hover:text-[#0a0a0a] transition-all">View all on Dev.to →</a>
     </div>
   </section>
 
   <!-- ===== CONTACT ===== -->
-  <section id="contact" class="py-24 px-4">
-    <div class="max-w-4xl mx-auto text-center section-in">
-      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">
+  <section id="contact" class="py-24 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a1a] to-[#0a0a0a] opacity-60"></div>
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#e94560]/5 rounded-full blur-3xl"></div>
+    <div class="max-w-4xl mx-auto text-center relative z-10 section-in">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-2">
         <span class="gradient-text">/</span> Contact
       </h2>
       <div class="w-16 h-1 bg-[#e94560] mx-auto mb-4 rounded-full"></div>
       <p class="text-[#555] mb-8">Let's build something together</p>
-      <div class="flex flex-wrap justify-center gap-6 mb-12">
-        <a href="mailto:diegosamuel042@gmail.com" class="flex items-center gap-3 px-6 py-4 bg-[#111] border border-[#222] rounded-xl hover:border-[#e94560] transition-all group">
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <a href="mailto:diegosamuel042@gmail.com" class="flex items-center gap-3 px-5 py-4 bg-[#111] border border-[#222] rounded-xl hover:border-[#e94560] transition-all group">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#888888" class="group-hover:fill-[#e94560] transition-colors"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           <span class="text-sm text-[#888] group-hover:text-[#eaeaea] transition-colors">diegosamuel042@gmail.com</span>
         </a>
-        <a href="https://github.com/dizzi1222" target="_blank" class="flex items-center gap-3 px-6 py-4 bg-[#111] border border-[#222] rounded-xl hover:border-[#e94560] transition-all group">
+        <a href="https://github.com/dizzi1222" target="_blank" class="flex items-center gap-3 px-5 py-4 bg-[#111] border border-[#222] rounded-xl hover:border-[#e94560] transition-all group">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#888888" class="group-hover:fill-[#e94560] transition-colors"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
           <span class="text-sm text-[#888] group-hover:text-[#eaeaea] transition-colors">dizzi1222</span>
         </a>
-        <a href="https://www.linkedin.com/in/dizzi-%C5%8Dkami-0b77093a1/" target="_blank" class="flex items-center gap-3 px-6 py-4 bg-[#111] border border-[#222] rounded-xl hover:border-[#e94560] transition-all group">
+        <a href="https://www.linkedin.com/in/dizzi-%C5%8Dkami-0b77093a1/" target="_blank" class="flex items-center gap-3 px-5 py-4 bg-[#111] border border-[#222] rounded-xl hover:border-[#e94560] transition-all group">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#888888" class="group-hover:fill-[#e94560] transition-colors"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           <span class="text-sm text-[#888] group-hover:text-[#eaeaea] transition-colors">LinkedIn</span>
         </a>
-        <a href="https://x.com/dizzi_ds" target="_blank" class="flex items-center gap-3 px-6 py-4 bg-[#111] border border-[#222] rounded-xl hover:border-[#e94560] transition-all group">
+        <a href="https://x.com/dizzi_ds" target="_blank" class="flex items-center gap-3 px-5 py-4 bg-[#111] border border-[#222] rounded-xl hover:border-[#e94560] transition-all group">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#888888" class="group-hover:fill-[#e94560] transition-colors"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           <span class="text-sm text-[#888] group-hover:text-[#eaeaea] transition-colors">@dizzi_ds</span>
         </a>
       </div>
-      <a href="assets/cv.pdf" target="_blank" class="inline-block px-8 py-3 bg-[#e94560] text-white font-semibold rounded hover:bg-[#d91a3a] transition-all hover-glow">Download Resume (PDF)</a>
+      <a href="assets/cv.pdf" target="_blank" class="inline-block px-8 py-3 bg-[#e94560] text-white font-semibold rounded-lg hover:bg-[#d91a3a] transition-all hover-glow">Download Resume (PDF)</a>
     </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="py-8 px-4 border-t border-[#222]">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p class="text-[#555] text-sm">© 2026 <span class="text-[#e94560]">Diego Härdi</span></p>
-      <div class="flex items-center gap-4 text-sm">
-        <span class="text-[#555] text-sm">🇩🇴 San Pedro de Macorís → Jarabacoa · 🇨🇭 Swiss</span>
-        <span class="text-[#333]">·</span>
-        <a href="https://dizzi1222.github.io/portfolio-terminal-dhardi" target="_blank" class="text-[#555] hover:text-[#00d9ff] transition-colors">🖥️ Versión Terminal</a>
-        <span class="text-[#333]">·</span>
-        <a href="#" class="text-[#555] hover:text-[#00d9ff] transition-colors">Back to top ↑</a>
+  <footer class="py-10 px-4 border-t border-[#222]">
+    <div class="max-w-6xl mx-auto flex flex-col items-center gap-6">
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/dizzi1222" target="_blank" class="text-[#555] hover:text-[#e94560] transition-colors" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/dizzi-%C5%8Dkami-0b77093a1/" target="_blank" class="text-[#555] hover:text-[#e94560] transition-colors" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/dizzi_ds" target="_blank" class="text-[#555] hover:text-[#e94560] transition-colors" aria-label="X">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://dev.to/dizzi1222" target="_blank" class="text-[#555] hover:text-[#e94560] transition-colors" aria-label="Dev.to">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.245 0H5.755C2.574 0 0 2.574 0 5.755v12.49C0 21.426 2.574 24 5.755 24h12.49C21.426 24 24 21.426 24 18.245V5.755C24 2.574 21.426 0 18.245 0zm-4.075 15.698a1.424 1.424 0 01-.706.19c-.7 0-1.085-.422-1.085-1.176v-5.47h1.582v5.421c0 .393.108.642.345.803.166.114.364.17.585.17a.964.964 0 00.694-.293l.492.732a1.888 1.888 0 01-.907.623zm-3.59-1.407c0 .763-.509 1.411-1.566 1.411-.61 0-1.103-.162-1.483-.49l.544-.781c.32.253.69.393 1.035.393.385 0 .595-.181.595-.475 0-.286-.136-.46-.883-.594-.986-.179-1.65-.622-1.65-1.506 0-.809.579-1.364 1.491-1.364.529 0 .987.143 1.344.427l-.49.794a1.34 1.34 0 00-.91-.367c-.352 0-.54.158-.54.387 0 .29.167.409.878.54.98.183 1.635.605 1.635 1.538v.087zm3.63-3.832c-.43 0-.775-.342-.775-.76 0-.418.346-.756.776-.756.432 0 .78.338.78.756 0 .418-.348.76-.78.76zm-7.866 0H4.663v7.31H5.58c.658 0 1.19-.147 1.61-.443.462-.33.694-.846.694-1.556v-3.89c0-.705-.23-1.22-.69-1.548-.42-.294-.953-.44-1.61-.44v.567zm.307 4.102c0 .66-.52 1.081-1.17 1.081h-.437v-5.27h.438c.65 0 1.169.414 1.169 1.073v3.116z"/></svg>
+        </a>
+        <a href="mailto:diegosamuel042@gmail.com" class="text-[#555] hover:text-[#e94560] transition-colors" aria-label="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
       </div>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-[#555]">
+        <a href="https://dizzi1222.github.io/portfolio-terminal-dhardi" target="_blank" class="hover:text-[#00d9ff] transition-colors">🖥️ Versión Terminal</a>
+        <span>·</span>
+        <span>© 2026 <span class="text-[#e94560]">Diego Härdi</span></span>
+        <span>·</span>
+        <a href="#" class="hover:text-[#00d9ff] transition-colors">Back to top ↑</a>
+      </div>
+      <p class="text-xs text-[#444]">🇩🇴 San Pedro de Macorís → Jarabacoa · 🇨🇭 Swiss</p>
     </div>
   </footer>
 
@@ -496,17 +679,14 @@
     function startSlideshow() { clearInterval(interval); interval = setInterval(nextSlide, 6000); }
     function stopSlideshow() { clearInterval(interval); }
 
-    // Init
     slides[0].classList.add('active', 'kenburns');
     startSlideshow();
 
-    // Keyboard arrows
     document.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') { stopSlideshow(); prevSlide(); startSlideshow(); }
       if (e.key === 'ArrowRight') { stopSlideshow(); nextSlide(); startSlideshow(); }
     });
 
-    // Mouse wheel on hero
     const hero = document.getElementById('hero');
     hero.addEventListener('wheel', e => {
       if (hero.getBoundingClientRect().bottom > window.innerHeight) return;
@@ -517,7 +697,6 @@
       startSlideshow();
     }, { passive: false });
 
-    // Touch swipe
     let touchStartX = 0;
     hero.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
     hero.addEventListener('touchend', e => {
@@ -530,7 +709,6 @@
       }
     }, { passive: true });
 
-    // Pause on hover
     hero.addEventListener('mouseenter', stopSlideshow);
     hero.addEventListener('mouseleave', startSlideshow);
   </script>
