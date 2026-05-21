@@ -1387,7 +1387,8 @@
         title: 'Terminal Portfolio',
         description: 'Portfolio interactivo con estética de terminal Linux. Comandos CLI personalizados (whoami, ls, cat, help, neofetch, sudo), efectos CRT con scanlines, glitch text y navegación inspirada en Vim. Diseñado específicamente para developers que aprecian una buena experiencia de línea de comandos.',
         url: 'https://dizzi1222.github.io/portfolio-terminal-dhardi/',
-        code: 'https://github.com/dizzi1222/portfolio-terminal-dhardi'
+        code: 'https://github.com/dizzi1222/portfolio-terminal-dhardi',
+        image: 'assets/modal-tech-portfolio-terminal.png'
       },
       {
         title: 'Dotfiles',
@@ -1407,7 +1408,8 @@
         description: 'Plataforma full-stack del bootcamp Cincinnatus: autenticación JWT, perfiles de usuario, catálogo de cursos con búsqueda y filtros, watchlist personalizada, notificaciones en tiempo real, panel de administración con auditoría. Stack MERN con Docker, WebSockets y diseño responsive.',
         url: 'https://github.com/Cincinnatus-Institute-of-Craftsmanship/ptd-talento-front',
         code: 'https://github.com/Cincinnatus-Institute-of-Craftsmanship/ptd-talento-back',
-        isPrivate: true
+        isPrivate: true,
+        image: 'assets/modal-tech-ptd-talento.png'
       },
       {
         title: 'Nvim Config',
@@ -1449,7 +1451,11 @@
       if (p.image) {
         modalImage.innerHTML = `<div style="width:100%;border-radius:0.75rem;overflow:hidden;background:var(--bg-card)"><img src="${p.image}" alt="${p.title}" style="width:100%;display:block" /></div>`;
         modalDesc.textContent = p.description;
-        modalFooter.innerHTML = `
+        modalFooter.innerHTML = p.isPrivate ? `
+          <a href="${p.code}" target="_blank" class="px-5 py-2 border border-custom text-muted text-sm font-semibold rounded-lg hover:border-[#00d9ff] hover:text-[#00d9ff] transition-all">${t.modal.viewCode} · Backend</a>
+          <a href="${p.url}" target="_blank" class="px-5 py-2 bg-[#e94560] text-white text-sm font-semibold rounded-lg hover:bg-[#d91a3a] transition-all">${t.modal.viewCode} · Frontend</a>
+          <span class="px-3 py-1 text-[10px] bg-red-500/10 text-red-400 rounded font-mono border border-red-500/20">🔒 ${t.modal.private || 'Privado'}</span>
+        ` : `
           <a href="${p.code}" target="_blank" class="px-5 py-2 border border-custom text-muted text-sm font-semibold rounded-lg hover:border-[#00d9ff] hover:text-[#00d9ff] transition-all">${t.modal.viewCode}</a>
           <a href="${p.url}" target="_blank" class="px-5 py-2 bg-[#e94560] text-white text-sm font-semibold rounded-lg hover:bg-[#d91a3a] transition-all">${t.modal.livePreview}</a>
         `;
