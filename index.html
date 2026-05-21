@@ -981,7 +981,7 @@
   <script>
     const i18n = {
       es: {
-        nav: { experience: 'Experiencia', projects: 'Proyectos', servicios: 'Servicios', setup: 'Setup', about: 'Sobre mí', blog: 'Blog', contact: 'Contacto', available: 'Disponible para trabajar', resume: 'Currículum' },
+        nav: { experience: 'Experiencia', projects: 'Proyectos', servicios: 'Servicios', setup: 'Setup', about: 'Sobre mí', contact: 'Contacto', available: 'Disponible para trabajar', resume: 'Currículum' },
         hero: { available: 'Disponible para trabajar', title: 'DevOps & Software Engineer', born: '🇩🇴 Nací en San Pedro de Macorís', passport: '🇨🇭 Pasaporte suizo', lives: '🏔️ Vivo en Jarabacoa', tagline: 'Building full-stack · Arch Linux · Neovim', getInTouch: 'Contáctame', previewCv: 'Vista previa CV' },
         exp: {
           heading: 'Experiencia', subtitle: 'Mi trayectoria profesional',
@@ -1054,7 +1054,7 @@
         }
       },
       en: {
-        nav: { experience: 'Experience', projects: 'Projects', servicios: 'Services', setup: 'Setup', about: 'About', blog: 'Blog', contact: 'Contact', available: 'Available for work', resume: 'Resume' },
+        nav: { experience: 'Experience', projects: 'Projects', servicios: 'Services', setup: 'Setup', about: 'About', contact: 'Contact', available: 'Available for work', resume: 'Resume' },
         hero: { available: 'Available for work', title: 'DevOps & Software Engineer', born: '🇩🇴 Born in San Pedro de Macorís', passport: '🇨🇭 Swiss passport', lives: '🏔️ Lives in Jarabacoa', tagline: 'Building full-stack · Arch Linux · Neovim', getInTouch: 'Get in touch', previewCv: 'Preview CV' },
         exp: {
           heading: 'Experience', subtitle: 'My professional journey',
@@ -1127,7 +1127,7 @@
         }
       },
       de: {
-        nav: { experience: 'Erfahrung', projects: 'Projekte', servicios: 'Services', setup: 'Setup', about: 'Über mich', blog: 'Blog', contact: 'Kontakt', available: 'Verfügbar für Arbeit', resume: 'Lebenslauf' },
+        nav: { experience: 'Erfahrung', projects: 'Projekte', servicios: 'Services', setup: 'Setup', about: 'Über mich', contact: 'Kontakt', available: 'Verfügbar für Arbeit', resume: 'Lebenslauf' },
         hero: { available: 'Verfügbar für Arbeit', title: 'DevOps & Software Engineer', born: '🇩🇴 Geboren in San Pedro de Macorís', passport: '🇨🇭 Schweizer Pass', lives: '🏔️ Lebt in Jarabacoa', tagline: 'Full-Stack-Entwicklung · Arch Linux · Neovim', getInTouch: 'Kontakt aufnehmen', previewCv: 'CV Vorschau' },
         exp: {
           heading: 'Erfahrung', subtitle: 'Mein beruflicher Werdegang',
@@ -1220,8 +1220,20 @@
       if (techDesc && techDesc.dataset.i18n === 'stack.hint') {
         techDesc.textContent = i18n[lang].stack.hint;
       }
-      // Update dropdown label
+      // Update dropdown label and highlight active language
       document.getElementById('current-lang-label').textContent = lang.toUpperCase();
+      document.querySelectorAll('.lang-dropdown-item').forEach(item => {
+        const itemLang = item.getAttribute('data-lang') || item.textContent.toLowerCase().trim();
+        if (itemLang === lang) {
+          item.innerHTML = `${lang.toUpperCase()} ✓`;
+          item.style.color = 'var(--text-primary)';
+          item.style.fontWeight = '600';
+        } else {
+          item.textContent = itemLang.toUpperCase();
+          item.style.color = 'var(--text-muted)';
+          item.style.fontWeight = '';
+        }
+      });
     }
 
     function toggleLangDropdown() {
@@ -1368,7 +1380,8 @@
         title: 'Dashboard React',
         description: 'Panel de administración completo con gráficos interactivos (Chart.js), calculadora integrada, sistema de contador y TO-DO list con persistencia. Desarrollo con React y react-router-dom para navegación SPA. Una muestra de mi capacidad para construir interfaces funcionales, reactivas y bien organizadas.',
         url: 'https://dhardi007.github.io/REACT-Diego-Dizzi-Dashboard/',
-        code: 'https://github.com/dizzi1222/REACT-Diego-Dizzi-Dashboard'
+        code: 'https://github.com/dizzi1222/REACT-Diego-Dizzi-Dashboard',
+        image: 'assets/modal-tech-Dashboard-REACT.png'
       },
       {
         title: 'Terminal Portfolio',
@@ -1380,7 +1393,8 @@
         title: 'Dotfiles',
         description: 'Configuración completa de mi entorno Arch Linux con Hyprland como compositor Wayland. Incluye Neovim (LazyVim) con plugins personalizados, Kitty como terminal, Zsh con powerlevel10k, Waybar, EWW widgets para system tray personalizado, Rofi como lanzador de apps, y wallpapers curados. Git bare repo para gestionar los dotfiles en mi home sin contaminar el sistema.',
         url: 'https://github.com/dizzi1222/dotfiles-dizzi',
-        code: 'https://github.com/dizzi1222/dotfiles-dizzi'
+        code: 'https://github.com/dizzi1222/dotfiles-dizzi',
+        image: 'assets/modal-tech-dotfiles.png'
       },
       {
         title: 'MCSD App',
@@ -1399,8 +1413,8 @@
         title: 'Nvim Config',
         description: 'Configuración universal de Neovim con LazyVim como base. LSP completo para TypeScript, JavaScript, Lua y CSS. Snippets personalizados, Telescope para búsqueda, y atajos tipo IDE. Sincronización multiplataforma entre Linux (Hyprland), WSL y Windows. Setup gestionado con dotfiles, sync scripts y PowerToys.',
         url: 'https://github.com/dizzi1222/nvim',
-        code: 'https://github.com/dizzi1222/nvim-wsl',
-        image: 'https://github.com/user-attachments/assets/8adb6f60-bb35-4704-b4ab-12bd587f3992'
+        code: 'https://github.com/dizzi1222/nvim',
+        image: 'assets/modal-tech-nvim.png'
       }
     ];
 
