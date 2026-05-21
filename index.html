@@ -258,7 +258,6 @@
         <a href="#servicios" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.servicios">Services</a>
         <a href="#setup" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.setup">Setup</a>
         <a href="#about" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.about">About</a>
-        <a href="#blog" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.blog">Blog</a>
         <a href="#contact" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.contact">Contact</a>
       </div>
       <div class="flex items-center gap-2 sm:gap-3">
@@ -267,11 +266,17 @@
           <button onclick="switchTheme('dark')" id="theme-dark-btn" class="px-1.5 py-1 text-xs rounded-md transition-all cursor-pointer" style="background:var(--bg-secondary);color:var(--text-primary)">🌙</button>
           <button onclick="switchTheme('light')" id="theme-light-btn" class="px-1.5 py-1 text-xs rounded-md transition-all cursor-pointer" style="color:var(--text-muted)">☀️</button>
         </div>
-        <!-- Language Switcher -->
-        <div class="flex items-center gap-0.5 bg-badge rounded-lg p-0.5">
-          <button onclick="switchLanguage('es')" id="lang-es-btn" class="lang-btn px-1.5 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer" style="background:var(--bg-secondary);color:var(--text-primary)">ES</button>
-          <button onclick="switchLanguage('en')" id="lang-en-btn" class="lang-btn px-1.5 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer" style="color:var(--text-muted)">EN</button>
-          <button onclick="switchLanguage('de')" id="lang-de-btn" class="lang-btn px-1.5 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer" style="color:var(--text-muted)">DE</button>
+        <!-- Language Dropdown -->
+        <div class="relative" id="lang-dropdown">
+          <button onclick="toggleLangDropdown()" id="lang-current-btn" class="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-badge hover:bg-secondary transition-all cursor-pointer" style="color:var(--text-primary)">
+            <span id="current-lang-label">ES</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div id="lang-dropdown-menu" class="absolute right-0 mt-1 bg-secondary border border-custom rounded-lg py-1 shadow-lg hidden" style="min-width:56px;z-index:100">
+            <button onclick="switchLanguage('es')" class="lang-dropdown-item block w-full text-left px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">ES</button>
+            <button onclick="switchLanguage('en')" class="lang-dropdown-item block w-full text-left px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">EN</button>
+            <button onclick="switchLanguage('de')" class="lang-dropdown-item block w-full text-left px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">DE</button>
+          </div>
         </div>
         <span class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs font-medium">
           <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
@@ -511,13 +516,6 @@
           <h3 class="font-display font-bold text-sm text-primary mb-1" data-i18n="servicios.s8.title">DevOps</h3>
           <p class="text-xs text-muted leading-relaxed" data-i18n="servicios.s8.desc">Docker, CI/CD con GitHub Actions, despliegues automatizados y entornos reproducibles.</p>
         </div>
-        <div class="stagger-child lg:col-span-2 bg-secondary border border-custom rounded-xl p-5 hover:border-[#00d9ff]/30 transition-all group">
-          <div class="w-10 h-10 rounded-lg bg-[#e94560]/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-            <svg class="w-5 h-5 text-[#e94560]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-          </div>
-          <h3 class="font-display font-bold text-sm text-primary mb-1" data-i18n="servicios.s9.title">UX/UI & Design Systems</h3>
-          <p class="text-xs text-muted leading-relaxed" data-i18n="servicios.s9.desc">Prototipado con Google Stitch, maquetado en Figma. Creación y mantenimiento de Design Systems (CIC-Styles), paletas de color y UI Kits estandarizados. Flujo completo: investigación → wireframe → prototipo → handoff a desarrollo.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -670,6 +668,36 @@
               <span data-i18n="projects.code">Code</span>
             </a>
             <button type="button" onclick="event.stopPropagation();openProjectModal(3)" class="flex items-center gap-1.5 text-xs text-subtle hover:text-[#00d9ff] transition-colors cursor-pointer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              <span data-i18n="projects.preview">Preview</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Nvim Config -->
+        <div onclick="openProjectModal(5)" class="project-card card-bg rounded-xl p-6 glow-cyan stagger-child" style="cursor:pointer">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-[#00d9ff]/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-[#00d9ff]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L1.75 6v12L12 24l10.25-6V6zm0 3.34l6.77 3.91v7.5L12 18.66l-6.77-3.91v-7.5z"/></svg>
+            </div>
+            <div class="flex gap-1">
+              <span class="px-2 py-0.5 text-[10px] bg-yellow-500/10 text-yellow-400 rounded font-mono">★ 5</span>
+            </div>
+          </div>
+          <h3 class="font-display text-lg font-bold mb-2 text-[#00d9ff]" data-i18n="projects.nvim.title">Nvim Config</h3>
+          <p class="text-muted text-sm mb-4 leading-relaxed" data-i18n="projects.nvim.desc">Configuración universal de Neovim con LazyVim, LSP para TS/JS/Lua, snippets y sincronización multiplataforma.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] bg-badge text-[#e94560] rounded font-mono">Lua</span>
+            <span class="px-2 py-0.5 text-[11px] bg-badge text-[#e94560] rounded font-mono">LazyVim</span>
+            <span class="px-2 py-0.5 text-[11px] bg-badge text-[#e94560] rounded font-mono">Neovim</span>
+            <span class="px-2 py-0.5 text-[11px] bg-badge text-[#e94560] rounded font-mono">LSP</span>
+          </div>
+          <div class="flex gap-3 pt-3 border-t border-custom">
+            <a href="https://github.com/dizzi1222/nvim" target="_blank" onclick="event.stopPropagation()" class="flex items-center gap-1.5 text-xs text-subtle hover:text-[#00d9ff] transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              <span data-i18n="projects.code">Code</span>
+            </a>
+            <button type="button" onclick="event.stopPropagation();openProjectModal(5)" class="flex items-center gap-1.5 text-xs text-subtle hover:text-[#00d9ff] transition-colors cursor-pointer">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               <span data-i18n="projects.preview">Preview</span>
             </button>
@@ -868,19 +896,6 @@
     </div>
   </section>
 
-  <!-- ===== BLOG ===== -->
-  <section id="blog" class="py-16 px-4 bg-surface">
-    <div class="max-w-4xl mx-auto text-center section-in">
-      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-2">
-        <span class="gradient-text">/</span> <span data-i18n="blog.heading">Blog</span>
-      </h2>
-      <div class="w-16 h-1 bg-[#e94560] mx-auto mb-4 rounded-full"></div>
-      <p class="text-subtle mb-6" data-i18n="blog.subtitle">Thoughts on dev, ops, and Linux</p>
-      <div id="devto-articles" class="text-muted text-sm"></div>
-      <a href="https://dev.to/dizzi1222" target="_blank" class="inline-block mt-6 px-6 py-3 border border-[#00d9ff] text-[#00d9ff] font-semibold rounded-lg hover:bg-[#00d9ff] hover:text-primary transition-all" data-i18n="blog.cta">Read my articles on Dev.to →</a>
-    </div>
-  </section>
-
   <!-- ===== CONTACT ===== -->
   <section id="contact" class="py-24 px-4 relative overflow-hidden">
     <div class="absolute inset-0 section-bg-2 opacity-60"></div>
@@ -981,7 +996,8 @@
           dotfiles: { title: 'Dotfiles', desc: 'Configuración completa de Arch Linux con Hyprland, Neovim (LazyVim), Kitty, Zsh, Waybar, EWW widgets y Rofi.' },
           mcsd: { title: 'MCSD App', desc: 'App educativa sobre conducción segura en RD. 8 páginas, diseño responsive con glassmorphism y animaciones scroll-based.' },
           code: 'Código', preview: 'Vista previa',
-          ptd: { title: 'PTD‑Talento', desc: 'Marketplace de talento del bootcamp Cincinnatus: auth, perfiles, catálogo, watchlist, notificaciones y panel admin.' }
+          ptd: { title: 'PTD‑Talento', desc: 'Marketplace de talento del bootcamp Cincinnatus: auth, perfiles, catálogo, watchlist, notificaciones y panel admin.' },
+          nvim: { title: 'Nvim Config', desc: 'Configuración universal de Neovim con LazyVim, LSP para TS/JS/Lua, snippets y sincronización multiplataforma.' }
         },
         servicios: {
           heading: 'Servicios', subtitle: 'Lo que puedo hacer por ti',
@@ -993,7 +1009,6 @@
           s6: { title: 'Admin Panels', desc: 'Paneles de administración con dashboards, auditoría, logs y gestión completa de usuarios y roles.' },
           s7: { title: 'API Design', desc: 'APIs RESTful con Express, documentación con Swagger, validación y middleware modular.' },
           s8: { title: 'DevOps', desc: 'Docker, CI/CD con GitHub Actions, despliegues automatizados y entornos reproducibles.' },
-          s9: { title: 'UX/UI & Design Systems', desc: 'Prototipado con Google Stitch, maquetado en Figma. Creación y mantenimiento de Design Systems (CIC-Styles), paletas de color y UI Kits estandarizados. Flujo completo: investigación → wireframe → prototipo → handoff a desarrollo.' }
         },
         setup: {
           heading: 'My Setup', subtitle: 'Arch Linux · Hyprland · Neovim · Dotfiles',
@@ -1015,7 +1030,6 @@
           label: { name: 'Nombre', born: 'Nacido en', lives: 'Vive en', passport: 'Pasaporte', role: 'Rol', os: 'SO', editor: 'Editor', languages: 'Idiomas' }
         },
         stack: { heading: 'Tech Stack', subtitle: 'Herramientas del oficio', hint: 'Haz clic en cualquier herramienta para saber más' },
-        blog: { heading: 'Blog', subtitle: 'Pensamientos sobre dev, ops y Linux', cta: 'Lee mis artículos en Dev.to →' },
         contact: { heading: 'Contacto', subtitle: 'Construyamos algo juntos', downloadResume: 'Descargar CV (PDF)' },
         footer: { terminal: '🖥️ Versión Terminal', backToTop: 'Volver arriba ↑', subtitle: '🇩🇴 San Pedro de Macorís → Jarabacoa · 🇨🇭 Suizo' },
         modal: {
@@ -1055,7 +1069,8 @@
           dotfiles: { title: 'Dotfiles', desc: 'Complete Arch Linux configuration with Hyprland, Neovim (LazyVim), Kitty, Zsh, Waybar, EWW widgets and Rofi.' },
           mcsd: { title: 'MCSD App', desc: 'Educational app about safe driving in DR. 8 pages, responsive design with glassmorphism and scroll-based animations.' },
           code: 'Code', preview: 'Preview',
-          ptd: { title: 'PTD‑Talento', desc: 'Talent marketplace from Cincinnatus bootcamp: auth, profiles, course catalog, watchlist, notifications and admin panel.' }
+          ptd: { title: 'PTD‑Talento', desc: 'Talent marketplace from Cincinnatus bootcamp: auth, profiles, course catalog, watchlist, notifications and admin panel.' },
+          nvim: { title: 'Nvim Config', desc: 'Universal Neovim configuration with LazyVim, LSP for TS/JS/Lua, snippets and cross-platform sync.' }
         },
         servicios: {
           heading: 'Services', subtitle: 'What I can do for you',
@@ -1067,7 +1082,6 @@
           s6: { title: 'Admin Panels', desc: 'Admin dashboards with audit logs, user management and full role-based control.' },
           s7: { title: 'API Design', desc: 'RESTful APIs with Express, Swagger documentation, validation and modular middleware.' },
           s8: { title: 'DevOps', desc: 'Docker, CI/CD with GitHub Actions, automated deployments and reproducible environments.' },
-          s9: { title: 'UX/UI & Design Systems', desc: 'Prototyping with Google Stitch, layout in Figma. Creation and maintenance of Design Systems (CIC-Styles), color palettes and standardized UI Kits. Full flow: research → wireframe → prototype → development handoff.' }
         },
         setup: {
           heading: 'My Setup', subtitle: 'Arch Linux · Hyprland · Neovim · Dotfiles',
@@ -1089,7 +1103,6 @@
           label: { name: 'Name', born: 'Born in', lives: 'Lives in', passport: 'Passport', role: 'Role', os: 'OS', editor: 'Editor', languages: 'Languages' }
         },
         stack: { heading: 'Tech Stack', subtitle: 'Tools of the trade', hint: 'Click on any tool above to learn more' },
-        blog: { heading: 'Blog', subtitle: 'Thoughts on dev, ops, and Linux', cta: 'Read my articles on Dev.to →' },
         contact: { heading: 'Contact', subtitle: 'Let\'s build something together', downloadResume: 'Download Resume (PDF)' },
         footer: { terminal: '🖥️ Terminal Version', backToTop: 'Back to top ↑', subtitle: '🇩🇴 San Pedro de Macorís → Jarabacoa · 🇨🇭 Swiss' },
         modal: {
@@ -1129,7 +1142,8 @@
           dotfiles: { title: 'Dotfiles', desc: 'Vollständige Arch Linux Konfiguration mit Hyprland, Neovim (LazyVim), Kitty, Zsh, Waybar, EWW Widgets und Rofi.' },
           mcsd: { title: 'MCSD App', desc: 'Bildungs-App über sicheres Fahren in der DR. 8 Seiten, responsives Design mit Glassmorphism und scrollbasierten Animationen.' },
           code: 'Code', preview: 'Vorschau',
-          ptd: { title: 'PTD‑Talento', desc: 'Talentmarktplatz aus dem Cincinnatus-Bootcamp: Auth, Profile, Kurskatalog, Watchlist, Benachrichtigungen und Admin-Panel.' }
+          ptd: { title: 'PTD‑Talento', desc: 'Talentmarktplatz aus dem Cincinnatus-Bootcamp: Auth, Profile, Kurskatalog, Watchlist, Benachrichtigungen und Admin-Panel.' },
+          nvim: { title: 'Nvim Config', desc: 'Universelle Neovim-Konfiguration mit LazyVim, LSP für TS/JS/Lua, Snippets und plattformübergreifender Synchronisation.' }
         },
         servicios: {
           heading: 'Services', subtitle: 'Was ich für dich tun kann',
@@ -1141,7 +1155,6 @@
           s6: { title: 'Admin Panels', desc: 'Admin-Dashboards mit Audit-Logs, Benutzerverwaltung und vollständiger Rollensteuerung.' },
           s7: { title: 'API Design', desc: 'RESTful-APIs mit Express, Swagger-Dokumentation, Validierung und modularem Middleware.' },
           s8: { title: 'DevOps', desc: 'Docker, CI/CD mit GitHub Actions, automatisierte Deployments und reproduzierbare Umgebungen.' },
-          s9: { title: 'UX/UI & Design Systems', desc: 'Prototyping mit Google Stitch, Layout in Figma. Erstellung und Pflege von Design Systems (CIC-Styles), Farbpaletten und standardisierten UI Kits. Kompletter Flow: Recherche → Wireframe → Prototyp → Übergabe an die Entwicklung.' }
         },
         setup: {
           heading: 'My Setup', subtitle: 'Arch Linux · Hyprland · Neovim · Dotfiles',
@@ -1163,7 +1176,6 @@
           label: { name: 'Name', born: 'Geboren in', lives: 'Lebt in', passport: 'Pass', role: 'Rolle', os: 'Betriebssystem', editor: 'Editor', languages: 'Sprachen' }
         },
         stack: { heading: 'Tech-Stack', subtitle: 'Werkzeuge des Handwerks', hint: 'Klicke auf ein Werkzeug, um mehr zu erfahren' },
-        blog: { heading: 'Blog', subtitle: 'Gedanken über Dev, Ops und Linux', cta: 'Lies meine Artikel auf Dev.to →' },
         contact: { heading: 'Kontakt', subtitle: 'Lass uns etwas gemeinsam bauen', downloadResume: 'Lebenslauf herunterladen (PDF)' },
         footer: { terminal: '🖥️ Terminal-Version', backToTop: 'Zurück nach oben ↑', subtitle: '🇩🇴 San Pedro de Macorís → Jarabacoa · 🇨🇭 Schweizer' },
         modal: {
@@ -1208,18 +1220,21 @@
       if (techDesc && techDesc.dataset.i18n === 'stack.hint') {
         techDesc.textContent = i18n[lang].stack.hint;
       }
-      // Update active button styling
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        const btnLang = btn.id.replace('lang-', '').replace('-btn', '');
-        if (btnLang === lang) {
-          btn.style.background = 'var(--bg-secondary)';
-          btn.style.color = 'var(--text-primary)';
-        } else {
-          btn.style.background = 'transparent';
-          btn.style.color = 'var(--text-muted)';
-        }
-      });
+      // Update dropdown label
+      document.getElementById('current-lang-label').textContent = lang.toUpperCase();
     }
+
+    function toggleLangDropdown() {
+      const menu = document.getElementById('lang-dropdown-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    document.addEventListener('click', (e) => {
+      const dd = document.getElementById('lang-dropdown');
+      if (dd && !dd.contains(e.target)) {
+        document.getElementById('lang-dropdown-menu').classList.add('hidden');
+      }
+    });
 
     function switchTheme(theme) {
       localStorage.setItem('dhardi-theme', theme);
@@ -1379,6 +1394,13 @@
         url: 'https://github.com/Cincinnatus-Institute-of-Craftsmanship/ptd-talento-front',
         code: 'https://github.com/Cincinnatus-Institute-of-Craftsmanship/ptd-talento-back',
         isPrivate: true
+      },
+      {
+        title: 'Nvim Config',
+        description: 'Configuración universal de Neovim con LazyVim como base. LSP completo para TypeScript, JavaScript, Lua y CSS. Snippets personalizados, Telescope para búsqueda, y atajos tipo IDE. Sincronización multiplataforma entre Linux (Hyprland), WSL y Windows. Setup gestionado con dotfiles, sync scripts y PowerToys.',
+        url: 'https://github.com/dizzi1222/nvim',
+        code: 'https://github.com/dizzi1222/nvim-wsl',
+        image: 'https://github.com/user-attachments/assets/8adb6f60-bb35-4704-b4ab-12bd587f3992'
       }
     ];
 
@@ -1410,7 +1432,14 @@
       const t = i18n[lang];
       modalTitle.textContent = p.title;
 
-      if (p.isPrivate) {
+      if (p.image) {
+        modalImage.innerHTML = `<div style="width:100%;border-radius:0.75rem;overflow:hidden;background:var(--bg-card)"><img src="${p.image}" alt="${p.title}" style="width:100%;display:block" /></div>`;
+        modalDesc.textContent = p.description;
+        modalFooter.innerHTML = `
+          <a href="${p.code}" target="_blank" class="px-5 py-2 border border-custom text-muted text-sm font-semibold rounded-lg hover:border-[#00d9ff] hover:text-[#00d9ff] transition-all">${t.modal.viewCode}</a>
+          <a href="${p.url}" target="_blank" class="px-5 py-2 bg-[#e94560] text-white text-sm font-semibold rounded-lg hover:bg-[#d91a3a] transition-all">${t.modal.livePreview}</a>
+        `;
+      } else if (p.isPrivate) {
         modalImage.innerHTML = `<div style="width:100%;padding:4rem 0;text-align:center;background:linear-gradient(135deg, var(--bg-card), var(--modal-bg));border-radius:0.75rem;color:var(--text-subtle);font-size:0.875rem;">🔒 ${t.modal.screenshotPrefix} ${p.title}</div>`;
         modalDesc.textContent = p.description;
         modalFooter.innerHTML = `
@@ -1506,6 +1535,7 @@
     }
 
     const techPopup = document.getElementById('tech-popup');
+    const techDesc = document.getElementById('tech-desc');
 
     document.querySelectorAll('#tech-grid > div').forEach(el => {
       const label = el.querySelector('span:last-child')?.textContent.trim();
@@ -1518,6 +1548,9 @@
           return;
         }
         if (!techInfo[label]) return;
+
+        // Update description text below grid
+        techDesc.textContent = `${label} — ${techInfo[label]}`;
 
         const rect = el.getBoundingClientRect();
         techPopup.innerHTML = `<span class="tp-label">${label}</span> — ${techInfo[label]}`;
