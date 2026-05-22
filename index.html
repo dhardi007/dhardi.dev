@@ -157,6 +157,13 @@
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+    @keyframes mobileNavIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes mobileNavBackdrop { from { opacity: 0; } to { opacity: 1; } }
+    #mobile-nav-menu.open { display: block; animation: mobileNavIn 0.2s ease forwards; }
+    #mobile-nav-backdrop.open { display: block; animation: mobileNavBackdrop 0.2s ease forwards; }
+    #mobile-nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    #mobile-nav-toggle.open span:nth-child(2) { opacity: 0; }
+    #mobile-nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
     @keyframes pulse-soft { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
     @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
@@ -278,6 +285,12 @@
             <button onclick="switchLanguage('de')" class="lang-dropdown-item block w-full text-left px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">DE</button>
           </div>
         </div>
+        <!-- Mobile Nav Toggle -->
+        <button id="mobile-nav-toggle" onclick="toggleMobileNav()" class="md:hidden flex flex-col items-center justify-center w-9 h-9 rounded-lg bg-badge hover:bg-secondary transition-all cursor-pointer" aria-label="Toggle navigation">
+          <span class="mobile-hamburger-line" style="width:16px;height:2px;background:var(--text-primary);border-radius:1px;transition:all 0.25s ease;transform-origin:center"></span>
+          <span class="mobile-hamburger-line" style="width:16px;height:2px;background:var(--text-primary);border-radius:1px;transition:all 0.25s ease;margin:4px 0"></span>
+          <span class="mobile-hamburger-line" style="width:16px;height:2px;background:var(--text-primary);border-radius:1px;transition:all 0.25s ease;transform-origin:center"></span>
+        </button>
         <span class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs font-medium">
           <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
           <span data-i18n="nav.available">Disponible</span>
@@ -285,6 +298,19 @@
         <button onclick="openCVModal()" class="px-5 py-2 bg-[#e94560] text-white text-sm font-semibold rounded-lg hover:bg-[#d91a3a] transition-all hover-glow cursor-pointer"><span data-i18n="nav.resume">Resume</span></button>
       </div>
     </div>
+    <!-- Mobile Nav Menu -->
+    <div id="mobile-nav-menu" class="md:hidden fixed left-0 right-0 nav-blur nav-bg border-b hidden" style="top:64px;border-color:var(--nav-border);z-index:49">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-1">
+        <a href="#experience" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.experience">Experience</a>
+        <a href="#projects" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.projects">Projects</a>
+        <a href="#servicios" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.servicios">Services</a>
+        <a href="#setup" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.setup">Setup</a>
+        <a href="#about" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.about">About</a>
+        <a href="#contact" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.contact">Contact</a>
+      </div>
+    </div>
+    <!-- Mobile Nav Backdrop -->
+    <div id="mobile-nav-backdrop" class="md:hidden fixed inset-0 hidden" style="z-index:48;background:rgba(0,0,0,0.5)" onclick="closeMobileNav()"></div>
   </nav>
 
   <!-- ===== HERO ===== -->
@@ -1491,6 +1517,19 @@
 
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileNav(); });
+    function toggleMobileNav() {
+      document.getElementById('mobile-nav-menu').classList.toggle('open');
+      document.getElementById('mobile-nav-backdrop').classList.toggle('open');
+      document.getElementById('mobile-nav-toggle').classList.toggle('open');
+    }
+    function closeMobileNav() {
+      document.getElementById('mobile-nav-menu').classList.remove('open');
+      document.getElementById('mobile-nav-backdrop').classList.remove('open');
+      document.getElementById('mobile-nav-toggle').classList.remove('open');
+    }
+    document.addEventListener('scroll', closeMobileNav, { passive: true });
+    window.addEventListener('resize', () => { if (window.innerWidth >= 768) closeMobileNav(); });
   </script>
 
 
