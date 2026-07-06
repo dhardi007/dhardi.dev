@@ -21,7 +21,7 @@ export const projects: Project[] = [
     technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
     image: '/modal-tech-Dashboard-REACT.png',
     github: 'https://github.com/dizzi1222/REACT-Diego-Dizzi-Dashboard',
-    live: 'https://reactdashboarddh.vercel.app/',
+    live: 'https://reactdashboarddh-one.vercel.app/',
     year: 2024, category: 'SPA', teamSize: 'Solo', featured: true,
   },
   {
