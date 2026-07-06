@@ -21,7 +21,7 @@ export const projects: Project[] = [
     technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
     image: '/modal-tech-Dashboard-REACT.png',
     github: 'https://github.com/dizzi1222/REACT-Diego-Dizzi-Dashboard',
-    live: 'https://dhardi007.github.io/REACT-Diego-Dizzi-Dashboard/',
+    live: 'https://reactdashboarddh.vercel.app/',
     year: 2024, category: 'SPA', teamSize: 'Solo', featured: true,
   },
   {
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     technologies: ['JavaScript', 'HTML', 'CSS', 'TypeScript', 'Tailwind'],
     image: '/modal-tech-pce-agencia-reskyt.png',
     github: 'https://github.com/dhardi007/PCE-Agencia',
-    live: 'https://pce-git-main-dizzi.vercel.app/',
+    live: 'https://pce-agencia.vercel.app/',
     year: 2024, category: 'Web App', teamSize: 'Solo',
   },
   {
