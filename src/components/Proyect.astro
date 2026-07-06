@@ -43,7 +43,10 @@ function getSkillColor(name: string): string {
 
   <!-- Content -->
   <div class="space-y-3 p-5">
-    <h3 class="text-lg font-bold transition-colors duration-300 group-hover:text-brand" style="color: var(--text-primary);">{project.title}</h3>
+    <h3 class="text-lg font-bold transition-colors duration-300 group-hover:text-brand flex items-center gap-2" style="color: var(--text-primary);">
+      {project.title}
+      {project.private && <span class="text-[10px] font-medium px-2 py-0.5 rounded-full" style="background: rgba(233,69,96,0.15); color: var(--color-brand); border: 1px solid rgba(233,69,96,0.3);">Privado</span>}
+    </h3>
     <p class="line-clamp-3 text-sm leading-relaxed" style="color: var(--text-muted);">
       {project.description}
     </p>

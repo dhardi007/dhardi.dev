@@ -11,6 +11,7 @@ export interface Project {
   category: string;
   teamSize: string;
   featured?: boolean;
+  private?: boolean;
 }
 
 export const projects: Project[] = [
@@ -30,8 +31,8 @@ export const projects: Project[] = [
     technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'Figma'],
     image: '/modal-tech-ptd-talento.png',
     github: 'https://github.com/Cincinnatus-Institute-of-Craftsmanship/ptd-talento-back',
-    live: 'https://github.com/Cincinnatus-Institute-of-Craftsmanship/ptd-talento-front',
-    year: 2025, category: 'Marketplace', teamSize: 'Team', featured: true,
+    live: 'https://ptd-talento-front.vercel.app',
+    year: 2025, category: 'Marketplace', teamSize: 'Team', featured: true, private: true,
   },
   {
     id: 1, title: 'Terminal Portfolio',
