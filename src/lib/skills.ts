@@ -9,7 +9,7 @@ export interface Skill {
 
 export const skills: Skill[] = [
   { name: 'Node.js', icon: 'IconNode', color: '#339933', category: 'Backend', description: 'Runtime JS del lado del servidor. APIs RESTful con Express.', tags: ['Runtime', 'Backend', 'JavaScript'] },
-  { name: 'Express', icon: 'IconExpress', color: '#000000', category: 'Backend', description: 'Framework minimalista para Node.js. APIs limpias y escalables.', tags: ['Framework', 'Backend', 'Node.js'] },
+  { name: 'Express', icon: 'IconExpress', color: '#ffffff', category: 'Backend', description: 'Framework minimalista para Node.js. APIs limpias y escalables.', tags: ['Framework', 'Backend', 'Node.js'] },
   { name: 'React', icon: 'IconReact', color: '#61DAFB', category: 'Frontend', description: 'Biblioteca declarativa de UI. Componentes reutilizables y hooks.', tags: ['Library', 'Frontend', 'SPA'] },
   { name: 'MongoDB', icon: 'IconMongoDB', color: '#47A248', category: 'Database', description: 'Base de datos NoSQL. Almacenamiento principal en proyectos MERN.', tags: ['Database', 'NoSQL', 'MERN'] },
   { name: 'PostgreSQL', icon: 'IconPostgreSQL', color: '#4169E1', category: 'Database', description: 'BD relacional open-source. Consultas SQL avanzadas y schemas.', tags: ['Database', 'SQL', 'Relational'] },
