@@ -17,7 +17,7 @@ const {
 ---
 
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,9 +33,9 @@ const {
     <title>{title}</title>
     <script is:inline>
       (function() {
-        const theme = localStorage.getItem('theme');
-        if (theme === 'light') document.documentElement.classList.remove('dark');
-        if (theme === 'light') document.documentElement.classList.add('light');
+        const theme = localStorage.getItem('dhardi-theme');
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
       })();
     </script>
   </head>
