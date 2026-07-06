@@ -80,7 +80,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     image: '/modal-proyeccion-astral.png',
     github: 'https://github.com/dizzi1222/proyeccion-astral-disculpa',
-    live: 'https://dizzi1222.github.io/proyeccion-astral-disculpa/',
+    live: 'https://proyeccion-astral.vercel.app/',
     year: 2025, category: 'Personal', teamSize: 'Solo',
   },
 ];
