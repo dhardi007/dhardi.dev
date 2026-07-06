@@ -156,8 +156,7 @@ const iconSvgs: Record<string, SvgIcon> = {
   IconOpenCode: {
     viewBox: '0 0 240 300',
     paths: [
-      { d: 'M180 240H60V120H180V240Z' },
-      { d: 'M180 60H60V240H180V60ZM240 300H0V0H240V300Z', fillRule: 'evenodd' }
+      { d: 'M240 300H0V0H240V300ZM180 60H60V240H180V60Z', fillRule: 'evenodd' }
     ]
   },
   IconReactRouter: {
@@ -299,11 +298,11 @@ const iconSvgs: Record<string, SvgIcon> = {
     color: #fff;
   }
   .skill-card.is-active {
-    grid-column: span 2 / span 2;
-    grid-row: span 2 / span 2;
     z-index: 10;
     border-color: var(--skill-color);
     box-shadow: 0 0 30px color-mix(in srgb, var(--skill-color) 20%, transparent);
+    overflow: visible;
+    transform: scale(1.2);
   }
   .skill-card.is-active .skill-icon {
     opacity: 0;

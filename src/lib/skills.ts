@@ -39,5 +39,5 @@ export const skills: Skill[] = [
   { name: 'Shell', icon: 'IconShell', color: '#89E051', category: 'Scripting', description: 'Bash/Zsh scripting. Automatización de sistema, pipelines y dotfiles.', tags: ['Scripting', 'Automation', 'Linux'] },
   { name: 'LazyVim', icon: 'IconLazyVim', color: '#2E7DE9', category: 'System', description: 'Distribución de Neovim con configuración moderna. LSP, Telescope, Treesitter y keymaps optimizados.', tags: ['Editor', 'Neovim', 'Productivity'] },
   { name: 'React Router', icon: 'IconReactRouter', color: '#CA4245', category: 'Frontend', description: 'Enrutamiento declarativo para React. Navegación SPA, loaders, actions y data fetching.', tags: ['Routing', 'React', 'SPA', 'Frontend'] },
-  { name: 'OpenCode', icon: 'IconOpenCode', color: '#6C5CE7', category: 'AI', description: 'Asistente de código con memoria persistente (Engram), Claude, OpenRouter y Antigravity. Mejor que Claude Desktop.', tags: ['AI', 'Assistant', 'Engram', 'Claude', 'OpenRouter'] },
+  { name: 'OpenCode', icon: 'IconOpenCode', color: '#6C5CE7', category: 'AI', description: 'Asistente de código con memoria persistente (Engram), Claude, OpenRouter, Antigravity y herramientas MCP (n8n, archivos, terminal). Mejor que Claude Desktop.', tags: ['AI', 'Assistant', 'Engram', 'MCP', 'Claude', 'OpenRouter'] },
 ];
