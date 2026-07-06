@@ -27,4 +27,8 @@ export const skills: Skill[] = [
   { name: 'Render', icon: 'IconRender', color: '#46E3B7', category: 'DevOps', description: 'Cloud hosting. Full-stack apps con deploy continuo desde Git.', tags: ['Cloud', 'Hosting', 'Deploy'] },
   { name: 'Vercel', icon: 'IconVercel', color: '#000000', category: 'DevOps', description: 'Cloud platform para frontends. Serverless functions.', tags: ['Cloud', 'Hosting', 'Deploy'] },
   { name: 'Google Cloud', icon: 'IconGCloud', color: '#4285F4', category: 'DevOps', description: 'Infraestructura cloud. Proyectos escalables.', tags: ['Cloud', 'Infra', 'GCP'] },
+  { name: 'HTML', icon: 'IconHTML', color: '#E34F26', category: 'Language', description: 'Lenguaje de marcado web. Estructura semántica y accesible.', tags: ['Language', 'Frontend', 'Markup'] },
+  { name: 'CSS', icon: 'IconCSS', color: '#1572B6', category: 'Frontend', description: 'Estilos web modernos. Flexbox, Grid, animaciones y variables.', tags: ['CSS', 'Frontend', 'Styling'] },
+  { name: 'Bootstrap', icon: 'IconBootstrap', color: '#7952B3', category: 'Frontend', description: 'Framework CSS responsive. Componentes y grid system.', tags: ['CSS', 'Framework', 'Frontend'] },
+  { name: 'Canvas', icon: 'IconCanvas', color: '#E04E1F', category: 'Design', description: 'Diseño y prototipado visual. Mockups y wireframes interactivos.', tags: ['Design', 'UI', 'Mockup'] },
 ];

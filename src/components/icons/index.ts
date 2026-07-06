@@ -30,6 +30,10 @@ import IconArrowLeft from './IconArrowLeft.astro';
 import IconArrowRight from './IconArrowRight.astro';
 import IconSend from './IconSend.astro';
 import IconMenu from './IconMenu.astro';
+import IconHTML from './IconHTML.astro';
+import IconCSS from './IconCSS.astro';
+import IconBootstrap from './IconBootstrap.astro';
+import IconCanvas from './IconCanvas.astro';
 
 export const iconMap: Record<string, AstroComponentFactory> = {
   IconReact,
@@ -63,4 +67,8 @@ export const iconMap: Record<string, AstroComponentFactory> = {
   IconArrowRight,
   IconSend,
   IconMenu,
+  IconHTML,
+  IconCSS,
+  IconBootstrap,
+  IconCanvas,
 };
