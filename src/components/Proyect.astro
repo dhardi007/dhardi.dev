@@ -24,7 +24,7 @@ function getSkillColor(name: string): string {
   style="background: var(--bg-secondary); border: 1px solid var(--border-color);"
 >
   <!-- Image -->
-  <div class="relative h-48 overflow-hidden sm:h-56">
+  <div class="relative h-48 overflow-hidden sm:h-56" transition:name={`project-img-${project.id}`}>
     {project.image ? (
       <img
         src={project.image}
@@ -43,7 +43,7 @@ function getSkillColor(name: string): string {
 
   <!-- Content -->
   <div class="space-y-3 p-5">
-    <h3 class="text-lg font-bold transition-colors duration-300 group-hover:text-brand flex items-center gap-2" style="color: var(--text-primary);">
+    <h3 class="text-lg font-bold transition-colors duration-300 group-hover:text-brand flex items-center gap-2" style="color: var(--text-primary);" transition:name={`project-title-${project.id}`}>
       {project.title}
       {project.private && <span class="text-[10px] font-medium px-2 py-0.5 rounded-full" style="background: rgba(233,69,96,0.15); color: var(--color-brand); border: 1px solid rgba(233,69,96,0.3);">Privado</span>}
     </h3>
@@ -63,15 +63,16 @@ function getSkillColor(name: string): string {
 
     <!-- Actions -->
     <div class="flex items-center gap-3 pt-2">
-      <ButtonPrimary href={`/ProyectDetail/${project.id}`}>
-        Ver detalles
-      </ButtonPrimary>
-      <a href={project.github} target="_blank" class="rounded-md p-2 transition-all hover:opacity-70" style="color: var(--text-muted);" aria-label="GitHub">
-        <IconGithub size={20} />
+      <a href={`/ProyectDetail/${project.id}`} class="btn-detail">
+        <span>Ver detalles</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-detail-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href={project.github} target="_blank" class="btn-icon" aria-label="GitHub">
+        <IconGithub size={18} />
       </a>
       {project.live && project.live !== project.github && (
-        <a href={project.live} target="_blank" class="rounded-md p-2 transition-all hover:opacity-70" style="color: var(--text-muted);" aria-label="Live">
-          <IconLink size={20} />
+        <a href={project.live} target="_blank" class="btn-icon" aria-label="Live">
+          <IconLink size={18} />
         </a>
       )}
     </div>

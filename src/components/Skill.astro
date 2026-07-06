@@ -21,7 +21,7 @@ const Icon = iconMap[skill.icon] || null;
   <span class="text-xs font-semibold" style="color: var(--text-primary);">{skill.name}</span>
 
   <!-- Tooltip on hover -->
-  <div class="absolute left-1/2 top-0 z-20 w-56 -translate-x-1/2 -translate-y-full rounded-xl p-3 text-left opacity-0 shadow-xl transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-[calc(100%+12px)]" style="background: var(--bg-secondary); border: 1px solid var(--border-color); pointer-events: none;">
+  <div class="absolute left-1/2 top-0 z-[100] w-56 -translate-x-1/2 -translate-y-full rounded-xl p-3 text-left opacity-0 shadow-xl transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-[calc(100%+12px)]" style="background: var(--bg-secondary); border: 1px solid var(--border-color); pointer-events: none;">
     <p class="text-xs font-semibold mb-1" style="color: {skill.color};">{skill.name}</p>
     <p class="text-xs mb-2" style="color: var(--text-muted);">{skill.description}</p>
     <div class="flex flex-wrap gap-1">

@@ -1,7 +1,8 @@
 ---
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 nav-blur nav-bg border-b transition-all duration-300" style="border-color:var(--nav-border)" id="header">
+<!-- Original top nav (visible at top, hidden on scroll) -->
+<nav class="fixed top-0 left-0 right-0 z-50 nav-blur nav-bg border-b transition-all duration-300 header-base" style="border-color:var(--nav-border)" id="header">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <a href="/" class="font-display font-bold text-xl tracking-tight flex items-center gap-2">
       <span><span style="color:#e94560">d</span><span style="color:#00d9ff">h</span><span style="color:#e94560">.</span></span>
@@ -12,6 +13,7 @@
       <a href="#projects" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.projects">Projects</a>
       <a href="#servicios" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.servicios">Services</a>
       <a href="#setup" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.setup">Setup</a>
+      <a href="#stack" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all">Skills</a>
       <a href="#certifications" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.certifications">Certifications</a>
       <a href="#contact" class="px-4 py-2 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.contact">Contact</a>
     </div>
@@ -26,9 +28,9 @@
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div id="lang-dropdown-menu" class="absolute right-0 mt-1 bg-secondary border border-custom rounded-lg py-1 shadow-lg hidden" style="min-width:56px;z-index:100">
-          <button onclick="switchLanguage('es')" class="lang-dropdown-item block w-full text-left px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">ES</button>
-          <button onclick="switchLanguage('en')" class="lang-dropdown-item block w-full text-left px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">EN</button>
-          <button onclick="switchLanguage('de')" class="lang-dropdown-item block w-full text-left px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">DE</button>
+          <button onclick="switchLanguage('es')" data-lang="es" class="lang-dropdown-item block w-full text-left px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">ES</button>
+          <button onclick="switchLanguage('en')" data-lang="en" class="lang-dropdown-item block w-full text-left px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">EN</button>
+          <button onclick="switchLanguage('de')" data-lang="de" class="lang-dropdown-item block w-full text-left px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">DE</button>
         </div>
       </div>
       <button id="mobile-nav-toggle" onclick="toggleMobileNav()" class="md:hidden flex flex-col items-center justify-center w-9 h-9 rounded-lg bg-badge hover:bg-secondary transition-all cursor-pointer" aria-label="Toggle navigation">
@@ -49,9 +51,38 @@
       <a href="#projects" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.projects">Projects</a>
       <a href="#servicios" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.servicios">Services</a>
       <a href="#setup" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.setup">Setup</a>
+      <a href="#stack" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all">Skills</a>
       <a href="#certifications" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.certifications">Certifications</a>
       <a href="#contact" onclick="closeMobileNav()" class="mobile-nav-link px-4 py-3 text-sm text-muted hover:text-primary hover-subtle rounded-lg transition-all" data-i18n="nav.contact">Contact</a>
     </div>
   </div>
   <div id="mobile-nav-backdrop" class="md:hidden fixed inset-0 hidden" style="z-index:48;background:rgba(0,0,0,0.5)" onclick="closeMobileNav()"></div>
+</nav>
+
+<!-- Floating nav (appears on scroll, replaces base nav) -->
+<nav id="floating-nav" class="floating-nav" aria-label="Floating navigation">
+  <a href="#experience" class="floating-nav-link" data-section="experience" data-i18n="nav.experience">Experiencia</a>
+  <a href="#projects" class="floating-nav-link" data-section="projects" data-i18n="nav.projects">Proyectos</a>
+  <a href="#servicios" class="floating-nav-link" data-section="servicios" data-i18n="nav.servicios">Servicios</a>
+  <a href="#setup" class="floating-nav-link" data-section="setup" data-i18n="nav.setup">Setup</a>
+  <a href="#stack" class="floating-nav-link" data-section="stack">Skills</a>
+  <a href="#certifications" class="floating-nav-link" data-section="certifications" data-i18n="nav.certifications">Certificaciones</a>
+  <a href="#contact" class="floating-nav-link" data-section="contact" data-i18n="nav.contact">Contacto</a>
+  <div class="floating-nav-divider"></div>
+  <div class="relative" id="floating-lang-dropdown">
+    <button onclick="document.getElementById('floating-lang-menu').classList.toggle('hidden')" class="floating-nav-lang">
+      <span id="floating-lang-label">ES</span>
+      <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div id="floating-lang-menu" class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-secondary border border-custom rounded-lg py-1 shadow-lg hidden" style="min-width:48px;z-index:200">
+      <button onclick="switchLanguage('es')" data-lang="es" class="lang-dropdown-item block w-full text-center px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">ES</button>
+      <button onclick="switchLanguage('en')" data-lang="en" class="lang-dropdown-item block w-full text-center px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">EN</button>
+      <button onclick="switchLanguage('de')" data-lang="de" class="lang-dropdown-item block w-full text-center px-3 py-1.5 text-xs hover:bg-badge transition-colors cursor-pointer" style="color:var(--text-muted)">DE</button>
+    </div>
+  </div>
+  <button onclick="openCVModal()" class="floating-nav-cv" data-i18n="nav.resume">CV</button>
+  <div class="flex items-center gap-0.5 bg-badge rounded-lg p-0.5">
+    <button onclick="switchTheme('dark')" class="floating-theme-btn px-1.5 py-1 text-xs rounded-md transition-all cursor-pointer">🌙</button>
+    <button onclick="switchTheme('light')" class="floating-theme-btn px-1.5 py-1 text-xs rounded-md transition-all cursor-pointer">☀️</button>
+  </div>
 </nav>

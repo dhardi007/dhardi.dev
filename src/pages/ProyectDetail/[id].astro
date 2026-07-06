@@ -27,37 +27,47 @@ function getSkillColor(name: string): string {
 
 <Layout title={`${project.title} — Diego Härdi`} description={project.description}>
   <main class="mx-auto max-w-3xl px-4 pt-24 pb-16">
-    <a href="/#projects" class="mb-6 inline-flex items-center gap-2 text-sm transition-all hover:opacity-70" style="color: var(--text-muted);">
-      <IconArrowLeft size={16} /> Volver a proyectos
+    <!-- Back button -->
+    <a href="/#projects" id="back-to-projects" class="lego-piece btn-back mb-6" style="--lego-i:0">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-back-arrow"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>Volver a proyectos</span>
     </a>
 
-    <h1 class="text-3xl font-extrabold mb-2" style="color: var(--text-primary);">{project.title}</h1>
+    <!-- Title -->
+    <h1 class="lego-piece text-3xl font-extrabold mb-2" style="color: var(--text-primary); --lego-i:1" transition:name={`project-title-${project.id}`}>
+      {project.title}
+    </h1>
 
-    <DataProyect year={project.year} category={project.category} teamSize={project.teamSize} />
+    <!-- Meta -->
+    <div class="lego-piece" style="--lego-i:2">
+      <DataProyect year={project.year} category={project.category} teamSize={project.teamSize} />
+    </div>
 
-    <!-- Tech badges -->
+    <!-- Tech badges (each badge is a lego piece) -->
     <div class="flex flex-wrap gap-2 my-6">
-      {project.technologies.map(tech => (
-        <BreadCrumb name={tech} color={getSkillColor(tech)} />
+      {project.technologies.map((tech, i) => (
+        <span class="lego-piece" style={`--lego-i:${3 + i}`}>
+          <BreadCrumb name={tech} color={getSkillColor(tech)} />
+        </span>
       ))}
     </div>
 
     <!-- Image -->
     {project.image && (
-      <div class="mb-8 overflow-hidden rounded-2xl" style="border: 1px solid var(--border-color);">
-        <img src={project.image} alt={project.title} class="w-full object-cover" />
+      <div class="lego-piece mb-8 overflow-hidden rounded-2xl" style={`border: 1px solid var(--border-color); --lego-i:${3 + project.technologies.length}`} transition:name={`project-img-${project.id}`}>
+        <img src={project.image} alt={project.title} class="w-full object-cover" loading="eager" />
       </div>
     )}
 
-    <!-- Description -->
+    <!-- Description paragraphs (each is a lego piece) -->
     <div class="prose prose-sm max-w-none space-y-4 mb-8" style="color: var(--text-muted);">
-      {project.descriptionLarge.split('\n\n').filter(Boolean).map(p => (
-        <p>{p.trim()}</p>
+      {project.descriptionLarge.split('\n\n').filter(Boolean).map((p, i) => (
+        <p class="lego-piece" style={`--lego-i:${4 + project.technologies.length + i}`}>{p.trim()}</p>
       ))}
     </div>
 
     <!-- Actions -->
-    <div class="flex flex-wrap gap-3">
+    <div class="lego-piece flex flex-wrap gap-3" style={`--lego-i:${6 + project.technologies.length + project.descriptionLarge.split('\\n\\n').length}`}>
       <ButtonPrimary href={project.github}>
         <IconGithub size={16} /> Ver código
       </ButtonPrimary>
@@ -69,3 +79,24 @@ function getSkillColor(name: string): string {
     </div>
   </main>
 </Layout>
+
+<style>
+  @keyframes legoIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .lego-piece {
+    opacity: 0;
+    animation: legoIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--lego-i, 0) * 0.06s);
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var back = document.getElementById('back-to-projects');
+      if (back) back.click();
+    }
+  });
+</script>

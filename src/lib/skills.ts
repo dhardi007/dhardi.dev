@@ -34,4 +34,8 @@ export const skills: Skill[] = [
   { name: 'Railway', icon: 'IconRailway', color: '#7E3AF2', category: 'DevOps', description: 'Plataforma cloud para backends. Deploy rápido con PostgreSQL integrado.', tags: ['Cloud', 'Hosting', 'Deploy'] },
   { name: 'VoltBuilder', icon: 'IconVoltBuilder', color: '#7C3AED', category: 'DevOps', description: 'Build service para apps nativas Android/iOS desde web apps (Cordova/Capacitor). No requiere Mac. APK y IPA sin SDKs locales.', tags: ['Mobile', 'Build', 'Android', 'iOS'] },
   { name: 'Material UI', icon: 'IconMaterialUI', color: '#007FFF', category: 'Frontend', description: 'Biblioteca de componentes React basada en Material Design. UI profesional con temas, grids y accesibilidad.', tags: ['UI', 'React', 'Components', 'Frontend'] },
+  { name: 'Vite', icon: 'IconVite', color: '#646CFF', category: 'DevOps', description: 'Build tool ultrarrápido. HMR instantáneo, ESBuild y optimización de módulos.', tags: ['Build', 'Bundler', 'HMR', 'Frontend'] },
+  { name: 'Lua', icon: 'IconLua', color: '#2C2D72', category: 'Language', description: 'Lenguaje ligero y embebible. Configuración de Neovim y extensiones.', tags: ['Language', 'Scripting', 'Neovim'] },
+  { name: 'Shell', icon: 'IconShell', color: '#89E051', category: 'Scripting', description: 'Bash/Zsh scripting. Automatización de sistema, pipelines y dotfiles.', tags: ['Scripting', 'Automation', 'Linux'] },
+  { name: 'LazyVim', icon: 'IconLazyVim', color: '#2E7DE9', category: 'System', description: 'Distribución de Neovim con configuración moderna. LSP, Telescope, Treesitter y keymaps optimizados.', tags: ['Editor', 'Neovim', 'Productivity'] },
 ];
