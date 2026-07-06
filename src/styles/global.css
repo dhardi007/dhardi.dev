@@ -269,6 +269,25 @@ html { scroll-behavior: smooth; }
 .cert-bar-track { height: 4px; background: var(--badge-bg); border-radius: 2px; overflow: hidden; }
 .cert-bar-fill { height: 100%; background: linear-gradient(90deg, #00d9ff, #e94560); border-radius: 2px; transition: width 0.5s ease; }
 
+/* Badge tech (original style) */
+.badge-tech {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: 9999px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+  transition: all 0.2s ease; cursor: default;
+}
+.badge-tech:hover {
+  transform: scale(1.05);
+}
+
+/* Dotted background pattern (Figma-like) */
+.bg-dots {
+  background-image: radial-gradient(circle, var(--text-muted) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
 /* Nav blur (for scroll) */
 #header.inMoved {
   background: var(--nav-bg);
