@@ -161,8 +161,8 @@ html { scroll-behavior: smooth; }
 .project-card:hover { border-color: #e94560; transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
 /* Tech icon */
-.icon-tech { width: 40px; height: 40px; filter: grayscale(100%) brightness(1.5); transition: all 0.3s ease; }
-.icon-tech:hover { filter: grayscale(0%) brightness(1); transform: scale(1.2) rotate(5deg); }
+.icon-tech { width: 40px; height: 40px; transition: all 0.3s ease; opacity: 0.8; }
+.icon-tech:hover { opacity: 1; transform: scale(1.2) rotate(5deg); }
 
 /* Tech popup */
 .tech-popup {
