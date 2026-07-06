@@ -9,7 +9,7 @@ Portafolio personal con identidad visual completa — hero con slideshow, timeli
 ## 🛠️ Stack
 
 - **Frontend:** Astro 7, React 19, TypeScript, Tailwind CSS v4
-- **Build:** Vite 8 (Astro), npm
+- **Build:** Vite 8 (Astro), pnpm
 - **Deploy:** Vercel (adapter-vercel, serverless functions)
 - **i18n:** ES / EN / DE (data-i18n attributes + switchLanguage JS)
 - **Animaciones:** CSS keyframes (fadeInUp, float, kenburns, stagger, modalIn) + Intersection Observer
@@ -66,15 +66,15 @@ dhardi.dev/
 ## 🏃‍♂️ Desarrollo Local
 
 ```bash
-npm install
-npm run dev          # → http://localhost:4321
-npm run build       # → dist/
-npm run preview     # Vista previa de producción
+pnpm install
+pnpm dev          # → http://localhost:4321
+pnpm build       # → dist/
+pnpm preview     # Vista previa de producción
 ```
 
 ## 🚢 Deploy
 
-Conecta el repo a [Vercel](https://vercel.com) — el adapter ya está configurado en `astro.config.mjs`. Vercel detecta automáticamente Astro y corre `npm run build`.
+Conecta el repo a [Vercel](https://vercel.com) — el adapter ya está configurado en `astro.config.mjs`. Vercel detecta automáticamente Astro y corre `pnpm build`.
 
 ## 📜 Licencia
 
