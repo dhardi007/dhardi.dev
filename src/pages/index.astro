@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import HeroLeft from "../components/HeroLeft.astro";
+import HeroRight from "../components/HeroRight.astro";
+import AboutMe from "../components/AboutMe.astro";
+import SectionProyects from "../components/SectionProyects.astro";
+import SectionSkills from "../components/SectionSkills.astro";
+import SectionCertification from "../components/SectionCertification.astro";
+import SectionContact from "../components/SectionContact.astro";
+---
+
+<Layout>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="mx-auto max-w-5xl px-4 pt-32 pb-16 md:pt-40">
+      <div class="flex flex-col items-center gap-10 md:flex-row">
+        <HeroLeft class="flex-1" />
+        <HeroRight class="flex-1" />
+      </div>
+    </section>
+
+    <AboutMe />
+    <SectionProyects />
+    <SectionSkills />
+    <SectionCertification />
+    <SectionContact />
+  </main>
+</Layout>

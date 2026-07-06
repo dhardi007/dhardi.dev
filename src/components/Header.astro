@@ -1,0 +1,51 @@
+---
+import ButtonToggleTheme from "./ButtonToggleTheme";
+import IconMenu from "./icons/IconMenu.astro";
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="header">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+    <a href="/" class="flex items-center gap-2 text-sm font-bold" style="color: var(--color-brand);">
+      <span class="font-bold text-lg">dhardi.dev</span>
+    </a>
+    <div class="hidden items-center gap-6 md:flex">
+      <a href="#about" class="text-sm transition-colors hover:opacity-70" style="color: var(--text-muted);">Sobre mí</a>
+      <a href="#projects" class="text-sm transition-colors hover:opacity-70" style="color: var(--text-muted);">Proyectos</a>
+      <a href="#skills" class="text-sm transition-colors hover:opacity-70" style="color: var(--text-muted);">Skills</a>
+      <a href="#certifications" class="text-sm transition-colors hover:opacity-70" style="color: var(--text-muted);">Certificaciones</a>
+      <a href="#contact" class="text-sm transition-colors hover:opacity-70" style="color: var(--text-muted);">Contacto</a>
+      <a href="/cv.pdf" target="_blank" class="rounded-md px-3 py-1.5 text-sm font-semibold transition-all hover:opacity-80" style="background: var(--color-brand); color: #fff;">CV</a>
+      <ButtonToggleTheme client:load />
+    </div>
+    <button id="mobile-menu-btn" class="block md:hidden" aria-label="Menú">
+      <IconMenu size={24} style="color: var(--text-primary);" />
+    </button>
+  </nav>
+</header>
+
+<script>
+  const header = document.getElementById('header');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    if (current > 100) {
+      header.classList.add('inMoved');
+    } else {
+      header.classList.remove('inMoved');
+    }
+    lastScroll = current;
+  }, { passive: true });
+</script>
+
+<style>
+  .inMoved {
+    background: rgba(13, 13, 13, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .light .inMoved {
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+</style>
