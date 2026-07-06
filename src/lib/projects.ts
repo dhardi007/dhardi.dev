@@ -90,7 +90,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Canvas'],
     image: '/modal-mcsd.png',
     github: 'https://github.com/dizzi1222/Proyecto-App-MCSD',
-    live: 'https://dizzi1222.github.io/Proyecto-App-MCSD/',
+    live: 'https://apps.volt.build/1d496dbf-1137-4fec-92d0-29c05aac9a3e/android.debug.apk',
     year: 2024, category: 'Educational', teamSize: 'Team',
   },
   {
