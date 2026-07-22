@@ -620,7 +620,8 @@ import SectionContact from "../components/SectionContact.astro";
 
   // ===== Initialize =====
   (function init() {
-    const savedLang = localStorage.getItem('dhardi-lang') || 'es';
+    const browserLang = navigator.language?.startsWith('de') ? 'de' : navigator.language?.startsWith('en') ? 'en' : 'es';
+    const savedLang = localStorage.getItem('dhardi-lang') || browserLang;
     const savedTheme = localStorage.getItem('dhardi-theme') || 'dark';
     switchLanguage(savedLang);
     switchTheme(savedTheme);
