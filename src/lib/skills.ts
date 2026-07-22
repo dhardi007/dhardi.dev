@@ -38,6 +38,7 @@ export const skills: Skill[] = [
   { name: 'Lua', icon: 'IconLua', color: '#2C2D72', category: 'Language', description: 'Lenguaje ligero y embebible. Configuración de Neovim y extensiones.', tags: ['Language', 'Scripting', 'Neovim'] },
   { name: 'Shell', icon: 'IconShell', color: '#89E051', category: 'Scripting', description: 'Bash/Zsh scripting. Automatización de sistema, pipelines y dotfiles.', tags: ['Scripting', 'Automation', 'Linux'] },
   { name: 'React Router', icon: 'IconReactRouter', color: '#CA4245', category: 'Frontend', description: 'Enrutamiento declarativo para React. Navegación SPA, loaders, actions y data fetching.', tags: ['Routing', 'React', 'SPA', 'Frontend'] },
-  { name: 'Antigravity', icon: 'IconAntigravity', color: '#E94560', category: 'AI', description: 'Backend AI con soporte multimodelo. Integrado en OpenCode como proveedor de inferencia local y remoto.', tags: ['AI', 'Backend', 'Inference', 'OpenCode'] },
+  { name: 'Antigravity', icon: 'IconAntigravity', color: '#E94560', category: 'Gaming', description: 'IDLE game — clica, acumula recursos y descubre secretos. Un experimento interactivo en el navegador.', tags: ['Game', 'IDLE', 'Interactive'] },
   { name: 'OpenCode', icon: 'IconOpenCode', color: '#6C5CE7', category: 'AI', description: 'Asistente de código con memoria persistente (Engram), Claude, OpenRouter, Antigravity y herramientas MCP (n8n, archivos, terminal). Mejor que Claude Desktop.', tags: ['AI', 'Assistant', 'Engram', 'MCP', 'Claude', 'OpenRouter'] },
+  { name: 'Ollama', icon: 'IconOllama', color: '#000000', category: 'AI', description: 'Ejecuta modelos de lenguaje localmente. LLMs open-source como Llama, Mistral, Gemma en tu propia máquina.', tags: ['AI', 'LLM', 'Local', 'Inference'] },
 ];
