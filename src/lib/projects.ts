@@ -31,7 +31,7 @@ export const projects: Project[] = [
     technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'Figma', 'Material UI'],
     image: '/modal-tech-ptd-talento.png',
     github: 'https://github.com/Cincinnatus-Institute-of-Craftsmanship/ptd-talento-back',
-    live: 'https://ptd-talento-front.vercel.app',
+    live: 'https://ptd-talento-frontend-dev-dot-cic-ptd-dev.ue.r.appspot.com/Inicio',
     year: 2025, category: 'Marketplace', teamSize: 'Team', featured: true, private: true,
   },
   {
