@@ -24,6 +24,7 @@ import IconGmail from './IconGmail.astro';
 import IconWhatsapp from './IconWhatsapp.astro';
 import IconTelegram from './IconTelegram.astro';
 import IconDevto from './IconDevto.astro';
+import IconInstagram from './IconInstagram.astro';
 import IconLink from './IconLink.astro';
 import IconCalendar from './IconCalendar.astro';
 import IconTag from './IconTag.astro';
@@ -71,6 +72,7 @@ export const iconMap: Record<string, AstroComponentFactory> = {
   IconWhatsapp,
   IconTelegram,
   IconDevto,
+  IconInstagram,
   IconLink,
   IconCalendar,
   IconTag,
