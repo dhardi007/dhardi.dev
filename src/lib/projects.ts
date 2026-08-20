@@ -104,4 +104,13 @@ export const projects: Project[] = [
     live: 'https://proyeccion-astral.vercel.app/',
     year: 2025, category: 'Personal', teamSize: 'Solo',
   },
+  {
+    id: 9, title: 'Workspace',
+    description: 'MCP things maybe?',
+    descriptionLarge: 'Workspace con proyectos como submódulos y repos independientes. Un monorepo flexible para experimentar con MCP (Model Context Protocol), todo orquestado desde un solo lugar.',
+    technologies: ['TypeScript', 'Shell', 'YAML'],
+    image: '/modal-workspace.png',
+    github: 'https://github.com/dizzi1222/workspace',
+    year: 2026, category: 'Workspace', teamSize: 'Solo',
+  },
 ];
