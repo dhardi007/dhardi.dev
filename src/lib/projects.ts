@@ -12,6 +12,10 @@ export interface Project {
   teamSize: string;
   featured?: boolean;
   private?: boolean;
+  descriptionEn?: string;
+  descriptionLargeEn?: string;
+  descriptionDe?: string;
+  descriptionLargeDe?: string;
 }
 
 export const projects: Project[] = [
@@ -106,8 +110,12 @@ export const projects: Project[] = [
   },
   {
     id: 9, title: 'Workspace',
-    description: 'MCP things maybe?',
+    description: 'MCP things maybe? Workspace con proyectos como submódulos y repos independientes.',
     descriptionLarge: 'Workspace con proyectos como submódulos y repos independientes. Un monorepo flexible para experimentar con MCP (Model Context Protocol), todo orquestado desde un solo lugar.',
+    descriptionEn: 'MCP things maybe? Workspace with projects as submodules and standalone repos.',
+    descriptionLargeEn: 'Workspace with projects as submodules and standalone repos. A flexible monorepo to experiment with MCP (Model Context Protocol), all orchestrated from a single place.',
+    descriptionDe: 'MCP-Dinge vielleicht? Workspace mit Projekten als Submodule und eigenständigen Repos.',
+    descriptionLargeDe: 'Workspace mit Projekten als Submodule und eigenständigen Repos. Ein flexibles Monorepo zum Experimentieren mit MCP (Model Context Protocol), alles an einem Ort orchestriert.',
     technologies: ['TypeScript', 'Shell', 'YAML'],
     image: '/modal-workspace.png',
     github: 'https://github.com/dizzi1222/workspace',

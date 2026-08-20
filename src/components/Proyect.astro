@@ -47,7 +47,7 @@ function getSkillColor(name: string): string {
       {project.title}
       {project.private && <span class="text-[10px] font-medium px-2 py-0.5 rounded-full" style="background: rgba(233,69,96,0.15); color: var(--color-brand); border: 1px solid rgba(233,69,96,0.3);">Privado</span>}
     </h3>
-    <p class="line-clamp-3 text-sm leading-relaxed" style="color: var(--text-muted);">
+    <p class="line-clamp-3 text-sm leading-relaxed" style="color: var(--text-muted);" data-i18n={project.id === 9 ? `proyectos.workspaceDesc` : undefined}>
       {project.description}
     </p>
 

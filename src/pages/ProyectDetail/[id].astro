@@ -23,6 +23,12 @@ function getSkillColor(name: string): string {
   const found = skills.find(s => s.name === name);
   return found?.color || "#888";
 }
+
+const descVariants = {
+    es: project.descriptionLarge,
+    en: project.descriptionLargeEn || project.descriptionLarge,
+    de: project.descriptionLargeDe || project.descriptionLarge
+  };
 ---
 
 <Layout title={`${project.title} — Diego Härdi`} description={project.description}>
@@ -60,7 +66,8 @@ function getSkillColor(name: string): string {
     )}
 
     <!-- Description paragraphs (each is a lego piece) -->
-    <div class="prose prose-sm max-w-none space-y-4 mb-8" style="color: var(--text-muted);">
+    <script type="application/json" id="project-desc-variants" set:html={JSON.stringify(descVariants)} />
+    <div class="prose prose-sm max-w-none space-y-4 mb-8" id="project-desc" style="color: var(--text-muted);">
       {project.descriptionLarge.split('\n\n').filter(Boolean).map((p, i) => (
         <p class="lego-piece" style={`--lego-i:${4 + project.technologies.length + i}`}>{p.trim()}</p>
       ))}
@@ -99,4 +106,16 @@ function getSkillColor(name: string): string {
       if (back) back.click();
     }
   });
+
+  // Translated description for projects with language variants (ES/EN/DE)
+  var jsonEl = document.getElementById('project-desc-variants');
+  if (jsonEl) {
+    var variants = JSON.parse(jsonEl.textContent || '{}');
+    var lang = localStorage.getItem('dhardi-lang') || 'es';
+    var text = variants[lang] || variants.es;
+    var container = document.getElementById('project-desc');
+    if (container) {
+      container.innerHTML = text.split('\n\n').filter(Boolean).map(p => `<p class="lego-piece">${p.trim()}</p>`).join('');
+    }
+  }
 </script>
