@@ -10,7 +10,6 @@ const cicCerts = [
 ];
 
 const otherCerts = [
-  { title: 'CIC Associate Developer', status: 'En progreso', progress: 44, issuer: 'Cincinnatus Bootcamp', color: 'var(--color-cyan)' },
   { title: 'JSCAMP — Midudev Bootcamp', status: 'En progreso', progress: 20, issuer: 'Midudev', color: 'var(--color-cyan)' },
   { title: 'Mimo Full-Stack Development', status: 'En progreso', progress: 15, issuer: 'Mimo GmbH', color: 'var(--color-cyan)' },
   { title: 'Exercism · TryHackMe', status: 'En progreso', progress: 10, issuer: 'Exercism + TryHackMe', color: 'var(--color-cyan)' },
@@ -46,7 +45,10 @@ const edu = [
         <div class="rounded-xl p-5 transition-all" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
           <div class="flex items-center justify-between mb-3">
             <span class="text-xs font-medium" style="color: var(--color-cyan);" data-i18n="certs.coursesCompleted">5 cursos completados</span>
-            <span class="text-xs font-mono" style="color: var(--text-muted);" data-i18n="certs.cicSubtitle">Cincinnatus Institute of Craftsmanship</span>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-medium" style="color: var(--color-green);" data-i18n="certs.completedLabel">Completado</span>
+              <span class="text-xs font-mono" style="color: var(--text-muted);" data-i18n="certs.cicSubtitle">Cincinnatus Institute of Craftsmanship</span>
+            </div>
           </div>
           <div class="cert-expand-list">
             {cicCerts.map(c => (
@@ -61,6 +63,9 @@ const edu = [
                 </div>
               </div>
             ))}
+          </div>
+          <div class="h-1.5 w-full overflow-hidden rounded-full mt-4" style="background: rgba(255,255,255,0.1);">
+            <div class="h-full rounded-full" style="width: 100%; background: linear-gradient(90deg, var(--color-cyan), var(--color-brand));"></div>
           </div>
         </div>
       </div>
