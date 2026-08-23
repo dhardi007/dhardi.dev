@@ -1,12 +1,73 @@
 ---
 const personalInterests = [
-  { key: 'gaming', img: '/interests/gaming.webp', color: '#00d9ff', future: false },
-  { key: 'anime', img: '/interests/anime.webp', color: '#f472b6', future: false },
-  { key: 'tv', img: '/interests/tv-series.webp', color: '#e94560', future: false },
-  { key: 'music', img: '/interests/music.webp', color: '#a78bfa', future: false },
-  { key: 'photography', img: '/interests/photography.webp', color: '#34d399', future: true },
-  { key: 'travel', img: '/interests/travel.webp', color: '#60a5fa', future: true },
-  { key: 'drawing', img: '/interests/drawing.webp', color: '#fbbf24', future: true },
+  {
+    key: 'gaming', color: '#00d9ff', future: false,
+    imgs: [
+      '/interests/gaming/gaming.webp',
+      '/interests/gaming/gaming-dmc3.webp',
+      '/interests/gaming/gaming-dmc3ps2.webp',
+      '/interests/gaming/gaming-kaine.webp',
+      '/interests/gaming/gaming-nier.webp',
+      '/interests/gaming/gaming-2b.webp',
+      '/interests/gaming/gaming-a2.webp',
+      '/interests/gaming/gaming-snake.webp',
+    ],
+  },
+  {
+    key: 'anime', color: '#f472b6', future: false,
+    imgs: [
+      '/interests/anime/anime.webp',
+      '/interests/anime/ashita-no-joe-art-13.jpg',
+      '/interests/anime/ashita-no-joe-carlos.png',
+      '/interests/anime/berserk-art-11.jpg',
+      '/interests/anime/berserk-guts-casca.jpg',
+      '/interests/anime/berserk-yume-no-kagaribi.jpg',
+      '/interests/anime/bleach-art-13.png',
+      '/interests/anime/csm-art-19.png',
+      '/interests/anime/csm-art-20.jpg',
+      '/interests/anime/dragon-ball-art-4.jpg',
+      '/interests/anime/dragon-ball-art-6.jpg',
+      '/interests/anime/dragon-ball-art-9.jpg',
+    ],
+  },
+  {
+    key: 'tv', color: '#e94560', future: false,
+    imgs: ['/interests/tv-series/tv-series.webp'],
+    video: '/interests/tv-series/star-wars-best-of.mp4',
+  },
+  {
+    key: 'music', color: '#a78bfa', future: false,
+    imgs: [
+      '/interests/music/music.webp',
+      '/interests/music/kew-music.webp',
+      '/interests/music/kew-icon.webp',
+    ],
+  },
+  {
+    key: 'photography', color: '#34d399', future: true,
+    imgs: [
+      '/interests/photography/photography.webp',
+      '/interests/photography/photography2.webp',
+      '/interests/photography/photography3.webp',
+    ],
+  },
+  {
+    key: 'travel', color: '#60a5fa', future: true,
+    imgs: [
+      '/interests/travel/travel.webp',
+      '/interests/travel/travel2.webp',
+      '/interests/travel/travel3.webp',
+      '/interests/travel/travel4.webp',
+      '/interests/travel/travel5.webp',
+    ],
+  },
+  {
+    key: 'drawing', color: '#fbbf24', future: true,
+    imgs: [
+      '/interests/drawing/drawing.webp',
+      '/interests/drawing/drawing-kaneki-study.webp',
+    ],
+  },
 ];
 
 const setupInterests = [
@@ -30,11 +91,31 @@ const setupInterests = [
     <h3 class="font-display text-sm font-semibold tracking-widest uppercase mb-6 text-center" style="color: var(--color-cyan);" data-i18n="interests.personalLabel">// Lo que disfruto</h3>
     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mb-14">
       {personalInterests.map(c => (
-        <div class="group rounded-xl overflow-hidden border border-custom bg-[var(--bg-secondary)] transition-all duration-300 hover:-translate-y-1 hover:border-[#00d9ff]/40">
+        <div class="interest-card group rounded-xl overflow-hidden border border-custom bg-[var(--bg-secondary)] transition-all duration-300 hover:-translate-y-1 hover:border-[#00d9ff]/40">
           <div class="relative h-44 overflow-hidden">
-            <img src={c.img} alt={c.key} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="media-stack" data-carousel>
+              {c.imgs.map((src, i) => (
+                <img
+                  src={src}
+                  alt={`${c.key}-${i + 1}`}
+                  loading={i === 0 ? 'lazy' : 'lazy'}
+                  decoding="async"
+                  class:list={['media-img', i === 0 && 'is-active']}
+                />
+              ))}
+            </div>
+            {c.video && (
+              <>
+                <button type="button" class="play-btn" data-tv-play aria-label="Play">
+                  <span class="play-circle">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
+                </button>
+                <video class="media-video" hidden preload="metadata" controls playsinline poster={c.imgs[0]} src={c.video}></video>
+              </>
+            )}
             {c.future && (
-              <span class="absolute top-3 right-3 z-10 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wide bg-purple-500/20 text-white border border-purple-400/50 rounded backdrop-blur-sm" style="text-shadow:0 1px 3px rgba(0,0,0,0.85), 0 0 6px rgba(0,0,0,0.5)" data-i18n="interests.futureBadge">Future Interest</span>
+              <span class="absolute top-3 right-3 z-20 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wide bg-purple-500/20 text-white border border-purple-400/50 rounded backdrop-blur-sm" style="text-shadow:0 1px 3px rgba(0,0,0,0.85), 0 0 6px rgba(0,0,0,0.5)" data-i18n="interests.futureBadge">Future Interest</span>
             )}
           </div>
           <div class="p-4">
@@ -75,3 +156,108 @@ const setupInterests = [
     </div>
   </div>
 </section>
+
+<style is:global>
+  .media-stack { position: relative; width: 100%; height: 100%; }
+  .media-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.5s ease;
+  }
+  .media-img.is-active { opacity: 1; }
+  .interest-card:hover .media-img { transform: scale(1.05); }
+
+  .play-btn {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+  }
+  .interest-card:hover .play-btn { opacity: 1; }
+  .play-circle {
+    width: 54px;
+    height: 54px;
+    border-radius: 9999px;
+    background: rgba(233, 69, 96, 0.85);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 4px;
+    box-shadow: 0 0 24px rgba(233, 69, 96, 0.5);
+    transition: transform 0.25s ease;
+  }
+  .play-btn:hover .play-circle { transform: scale(1.08); }
+
+  .media-video {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+  }
+  .media-video[hidden] { display: none; }
+</style>
+
+<script>
+  function initInterestsMedia() {
+    document.querySelectorAll<HTMLElement>('[data-carousel]').forEach(stack => {
+      const imgs = Array.from(stack.querySelectorAll<HTMLImageElement>('.media-img'));
+      if (imgs.length < 2) return;
+      const card = stack.closest<HTMLElement>('.interest-card');
+      if (!card) return;
+      let idx = 0;
+      let timer: ReturnType<typeof setInterval> | undefined;
+
+      card.addEventListener('mouseenter', () => {
+        timer = setInterval(() => {
+          imgs[idx].classList.remove('is-active');
+          idx = (idx + 1) % imgs.length;
+          imgs[idx].classList.add('is-active');
+        }, 1500);
+      });
+
+      card.addEventListener('mouseleave', () => {
+        clearInterval(timer);
+        imgs.forEach(img => img.classList.remove('is-active'));
+        idx = 0;
+        imgs[0].classList.add('is-active');
+      });
+    });
+
+    document.querySelectorAll<HTMLElement>('[data-tv-play]').forEach(btn => {
+      const media = btn.closest<HTMLElement>('.relative');
+      const video = media?.querySelector<HTMLVideoElement>('.media-video');
+      if (!video) return;
+
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        btn.hidden = true;
+        video.hidden = false;
+        video.play().catch(() => {});
+      });
+
+      video.addEventListener('ended', () => {
+        video.hidden = true;
+        video.currentTime = 0;
+        btn.hidden = false;
+      });
+    });
+  }
+
+  initInterestsMedia();
+</script>
