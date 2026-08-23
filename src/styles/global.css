@@ -463,6 +463,24 @@ html { scroll-behavior: smooth; }
 .scroll-dot:hover .scroll-dot-tooltip { opacity: 1; right: 26px; }
 @media (max-width: 768px) { .scroll-dots { display: none; } }
 
+/* Nav responsivo — todo en una sola línea, nada se cae hacia abajo */
+.floating-nav { max-width: calc(100vw - 1rem); flex-wrap: nowrap; }
+.header-links { flex-wrap: nowrap; }
+.header-links a { white-space: nowrap; }
+@media (max-width: 1180px) {
+  .header-links a { padding-left: 0.55rem; padding-right: 0.55rem; font-size: 0.8rem; }
+}
+@media (max-width: 1100px) {
+  .floating-nav-link { padding: 0.3rem 0.5rem; font-size: 0.7rem; }
+}
+@media (max-width: 920px) {
+  .floating-nav { gap: 0.15rem; padding: 0.35rem 0.5rem; }
+  .floating-nav-link { padding: 0.28rem 0.4rem; font-size: 0.64rem; }
+  .floating-nav-cv { padding: 0.28rem 0.55rem; font-size: 0.64rem; }
+  .floating-nav-lang { padding: 0.25rem 0.45rem; font-size: 0.62rem; }
+  .header-links a { padding-left: 0.4rem; padding-right: 0.4rem; font-size: 0.72rem; }
+}
+
 /* Nav base → smooth morph out */
 .header-base {
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);

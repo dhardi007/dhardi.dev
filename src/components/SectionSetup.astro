@@ -34,7 +34,7 @@ const setupInterests = [
           <div class="relative h-44 overflow-hidden">
             <img src={c.img} alt={c.key} loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             {c.future && (
-              <span class="absolute top-3 right-3 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wide bg-purple-500/20 text-purple-300 border border-purple-500/40 rounded backdrop-blur-sm" data-i18n="interests.futureBadge">Future Interest</span>
+              <span class="absolute top-3 right-3 z-10 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wide bg-purple-600 text-white border border-purple-300/50 rounded shadow-md shadow-purple-900/40" data-i18n="interests.futureBadge">Future Interest</span>
             )}
           </div>
           <div class="p-4">
