@@ -40,6 +40,7 @@ dhardi.dev/
 │   │   └── Layout.astro         # Layout global (data-theme, head, scripts)
 │   ├── pages/
 │   │   ├── index.astro          # Hero + todas las secciones + modales + i18n + JS cliente
+│   │   │                        #   · Interests v2: carrusel hover por tarjeta + player TV
 │   │   └── ProyectDetail/
 │   │       └── [id].astro       # Página detalle de proyecto (SSR)
 │   ├── components/
@@ -58,7 +59,7 @@ dhardi.dev/
 │   │   └── skills.ts            # Skills lookup (colores + iconos)
 │   └── styles/
 │       └── global.css           # Sistema temas + animaciones + utilidades
-├── public/                      # Imágenes, favicon, CV
+├── public/                      # Imágenes, favicon, CV 2026, .nojekyll (salta Jekyll en GH Pages)
 ├── astro.config.mjs             # Vercel adapter + Tailwind plugin
 └── package.json                 # Astro 7, React 19, Tailwind v4
 ```
