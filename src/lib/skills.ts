@@ -30,7 +30,6 @@ export const skills: Skill[] = [
   { name: 'HTML', icon: 'IconHTML', color: '#E34F26', category: 'Language', description: 'Lenguaje de marcado web. Estructura semántica y accesible.', tags: ['Language', 'Frontend', 'Markup'] },
   { name: 'CSS', icon: 'IconCSS', color: '#1572B6', category: 'Frontend', description: 'Estilos web modernos. Flexbox, Grid, animaciones y variables.', tags: ['CSS', 'Frontend', 'Styling'] },
   { name: 'Bootstrap', icon: 'IconBootstrap', color: '#7952B3', category: 'Frontend', description: 'Framework CSS responsive. Componentes y grid system.', tags: ['CSS', 'Framework', 'Frontend'] },
-  { name: 'Canvas', icon: 'IconCanvas', color: '#E04E1F', category: 'Design', description: 'Diseño y prototipado visual. Mockups y wireframes interactivos.', tags: ['Design', 'UI', 'Mockup'] },
   { name: 'Railway', icon: 'IconRailway', color: '#7E3AF2', category: 'DevOps', description: 'Plataforma cloud para backends. Deploy rápido con PostgreSQL integrado.', tags: ['Cloud', 'Hosting', 'Deploy'] },
   { name: 'VoltBuilder', icon: 'IconVoltBuilder', color: '#7C3AED', category: 'DevOps', description: 'Build service para apps nativas Android/iOS desde web apps (Cordova/Capacitor). No requiere Mac. APK y IPA sin SDKs locales.', tags: ['Mobile', 'Build', 'Android', 'iOS'] },
   { name: 'Material UI', icon: 'IconMaterialUI', color: '#007FFF', category: 'Frontend', description: 'Biblioteca de componentes React basada en Material Design. UI profesional con temas, grids y accesibilidad.', tags: ['UI', 'React', 'Components', 'Frontend'] },

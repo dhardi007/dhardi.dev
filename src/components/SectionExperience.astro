@@ -1,4 +1,6 @@
 ---
+import { projects } from '../lib/projects';
+const ptdTech = projects.find((p) => p.title === 'PTD-Talento')?.technologies ?? [];
 ---
 
 <section id="experience" class="py-24 px-4 relative overflow-hidden">
@@ -31,7 +33,7 @@
             Desarrollo del proyecto "Marketplace de Talento" [PTD-Talento] con un equipo de 4 desarrolladores. Protagonisé como Lead Tech: agilicé y coordiné exitosamente el desarrollo del producto, actualmente en espera de la pasantía.
           </p>
           <div class="flex flex-wrap gap-2 mt-3">
-            {['React', 'Node.js', 'Express', 'PostgreSQL', 'Docker'].map((tech) => (
+            {ptdTech.map((tech) => (
               <span class="text-xs px-2.5 py-1 rounded-full bg-[#00d9ff]/10 text-[#00d9ff] border border-[#00d9ff]/20">{tech}</span>
             ))}
           </div>
