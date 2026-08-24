@@ -5,7 +5,11 @@
   <h2 class="mb-2 text-sm font-semibold tracking-widest uppercase" style="color: var(--color-brand);">// <span data-i18n="about.heading">Sobre mí</span></h2>
   <div class="grid gap-10 md:grid-cols-2 md:gap-16">
     <div>
-      <img src="/avatar2.webp" alt="About" class="w-full rounded-2xl" style="border: 1px solid var(--border-color);" loading="lazy" />
+      <div class="relative overflow-hidden rounded-2xl">
+      <img src="/avatar2.webp" alt="About" class="w-full" style="border: 1px solid var(--border-color);" loading="lazy" />
+      <div class="freedom-scrim" aria-hidden="true"></div>
+      <span class="freedom-quote" aria-hidden="true">&ldquo;Freedom.&rdquo;</span>
+    </div>
     </div>
     <div class="space-y-4" style="color: var(--text-muted);">
       <p data-i18n="about.desc1">
@@ -40,3 +44,37 @@
     </div>
   </div>
 </section>
+
+<style>
+  .freedom-scrim {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 42%;
+    background: linear-gradient(to top, rgba(2, 6, 23, 0.78), transparent);
+    pointer-events: none;
+  }
+  .freedom-quote {
+    position: absolute;
+    left: 1.4rem;
+    bottom: 1rem;
+    z-index: 10;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+    letter-spacing: 0.06em;
+    transform: rotate(-4deg);
+    transform-origin: left bottom;
+    background: linear-gradient(100deg, var(--color-cyan) 0%, var(--color-brand) 55%, #b0152e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: freedom-pulse 3.2s ease-in-out infinite alternate;
+    pointer-events: none;
+    user-select: none;
+  }
+  @keyframes freedom-pulse {
+    from { filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.3)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7)); }
+    to   { filter: drop-shadow(0 0 24px rgba(233, 69, 96, 0.6)) drop-shadow(0 2px 12px rgba(0, 0, 0, 0.75)); }
+  }
+</style>
